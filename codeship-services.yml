@@ -2,3 +2,4 @@ contact_list:
   build:
     image: andrewshawcare/contact_list
     dockerfile_path: Dockerfile
+  cached: true
