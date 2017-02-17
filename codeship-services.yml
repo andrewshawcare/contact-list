@@ -1,0 +1,4 @@
+contact_list:
+  build:
+    image: contact-list
+    dockerfile_path: Dockerfile
