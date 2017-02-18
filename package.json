@@ -1,0 +1,28 @@
+{
+  "name": "contact-list",
+  "version": "0.0.1",
+  "description": "Manage a list of your personal contacts.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "static --host-address 0.0.0.0 --port $PORT src",
+    "lint": "semistandard",
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:andrewshawcare/contact-list.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine": "^2.5.3",
+    "jsdom": "^9.11.0",
+    "requirejs": "^2.3.2",
+    "semistandard": "^9.2.1"
+  },
+  "dependencies": {
+    "node-static": "^0.7.9",
+    "requirejs": "^2.3.2"
+  }
+}

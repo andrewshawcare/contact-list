@@ -1,5 +1,10 @@
-contact_list:
+herokudeployment:
+  image: codeship/heroku-deployment
+  encrypted_env_file: heroku-deployment.env.encrypted
+  volumes:
+    - ./:/deploy
+contactlist:
   build:
-    image: andrewshawcare/contact_list
-    dockerfile_path: Dockerfile
+    image: contact-list
+    dockerfile: Dockerfile
   cached: true
