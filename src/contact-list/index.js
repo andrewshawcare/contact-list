@@ -1,5 +1,4 @@
-(({ define }) => {
-  define([], () => {
-    return {};
-  });
-})(window);
+/* global define */
+define([], function () {
+  return {};
+});

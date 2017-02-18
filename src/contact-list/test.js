@@ -1,9 +1,8 @@
-(({ define, describe, it, expect }) => {
-  define(['./index.js'], (ContactList) => {
-    describe('Contact List', () => {
-      it('is defined', () => {
-        expect(ContactList).toBeDefined();
-      });
+/* global define, describe, it, expect */
+define(['./index'], function (ContactList) {
+  describe('Contact List', function () {
+    it('is defined', function () {
+      expect(ContactList).toBeDefined();
     });
   });
-})(window);
+});
