@@ -13,8 +13,6 @@
     "type": "git",
     "url": "git@github.com:andrewshawcare/contact-list.git"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
   "devDependencies": {
     "glob": "^7.1.1",
