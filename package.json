@@ -6,7 +6,7 @@
   "scripts": {
     "start": "static --host-address 0.0.0.0 --port $PORT src",
     "lint": "semistandard | snazzy",
-    "test": "node test.js"
+    "test": "node test.js src/**/test.js"
   },
   "repository": {
     "type": "git",
@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "glob": "^7.1.1",
     "jasmine": "^2.5.3",
     "jsdom": "^9.11.0",
     "requirejs": "^2.3.2",

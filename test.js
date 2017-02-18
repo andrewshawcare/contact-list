@@ -12,6 +12,8 @@ requirejs.config({
   nodeRequire: require
 });
 
-requirejs(['./src/contact-list/test.js'], function () {
-  jasmine.execute();
+const glob = require('glob');
+glob(process.argv[2], (error, files) => {
+  if (error) { throw error; }
+  requirejs(files, () => { jasmine.execute(); });
 });

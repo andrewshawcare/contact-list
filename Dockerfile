@@ -8,6 +8,7 @@ WORKDIR /usr/src/app
 COPY ./package.json .
 RUN npm install
 
+COPY ./test.js .
 COPY ./src ./src
 
 ENTRYPOINT ["npm"]
