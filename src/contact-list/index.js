@@ -1,3 +1,5 @@
-define([], () => {
-  return () => {};
-});
+(({ define }) => {
+  define([], () => {
+    return {};
+  });
+})(window);
