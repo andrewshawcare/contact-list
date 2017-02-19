@@ -1,5 +1,6 @@
 const jsdom = require('jsdom');
 global.window = jsdom.jsdom().defaultView;
+global.document = window.document;
 
 const jasmine = new (require('jasmine'))();
 Object.assign(window, jasmine.env);
