@@ -1,6 +1,11 @@
 /* global define */
-define([], () => ({contacts = []}) => {
-  return {
-    list () { return contacts; }
+define([], function () {
+  return function (options) {
+    var contacts = (options.contacts instanceof Array) ? options.contacts : [];
+    return {
+      list: function () {
+        return contacts;
+      }
+    };
   };
 });
