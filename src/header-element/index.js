@@ -1,4 +1,4 @@
-module.exports = ({ logo = '' }) => {
+module.exports = ({ logo = '' } = {}) => {
   const headerElement = document.createElement('header');
   headerElement.classList.add('header');
 

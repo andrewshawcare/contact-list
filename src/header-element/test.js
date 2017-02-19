@@ -1,8 +1,12 @@
 /* global describe, it, expect */
-const Header = require('./index.js');
+const HeaderElement = require('./index.js');
 
-describe('Header', () => {
+describe('Header element', () => {
+  it('has the header class', () => {
+    expect(HeaderElement().classList.contains('header')).toBe(true);
+  });
+
   it('renders a logo', () => {
-    expect(Header({ logo: 'Contact List' }).querySelector('.logo').textContent).toBe('Contact List');
+    expect(HeaderElement({ logo: 'Contact List' }).querySelector('.logo').textContent).toBe('Contact List');
   });
 });
