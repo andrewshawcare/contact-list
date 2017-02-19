@@ -2,3 +2,4 @@ node_modules
 codeship.aes
 npm-debug.log
 dist
+localStorage
