@@ -5,6 +5,12 @@ module.exports = ({contacts = []} = {}) => {
       contacts.push(contact);
       return this;
     },
-    find (filter) { return contacts.filter(filter); }
+    find (filter) { return contacts.filter(filter); },
+    edit ({find, replace}) {
+      contacts.map((contact) => {
+        return find(contact) ? replace(contact) : contact;
+      });
+      return this;
+    }
   };
 };
