@@ -5,7 +5,6 @@ const contacts = require('./contacts.json');
 describe('Application', () => {
   beforeEach(() => {
     window.localStorage.removeItem('contacts');
-    document.title = '';
   });
 
   it('loads a default list of contacts if no contacts are present in localStorage', () => {
@@ -32,5 +31,12 @@ describe('Application', () => {
   it('renders a header', () => {
     Application().render();
     expect(document.body.querySelector('.application > .header')).not.toBeNull();
+  });
+
+  describe('Header', () => {
+    it('renders a logo', () => {
+      Application({ header: { logo: 'Contact List' } }).render();
+      expect(document.body.querySelector('.application > .header > .logo').textContent).toBe('Contact List');
+    });
   });
 });

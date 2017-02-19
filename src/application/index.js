@@ -1,6 +1,9 @@
 const ContactList = require('../contact-list');
 
-module.exports = ({title = ''} = {}) => {
+module.exports = ({
+  title = '',
+  header: { logo = '' } = {}
+} = {}) => {
   const contacts = window.localStorage.getItem('contacts') ? JSON.parse(window.localStorage.getItem('contacts')) : require('./contacts.json');
   const contactList = ContactList({contacts});
   return {
@@ -10,14 +13,20 @@ module.exports = ({title = ''} = {}) => {
     render: () => {
       document.title = title;
 
+      document.body.innerHTML = '';
+
       const applicationElement = document.createElement('article');
       applicationElement.classList.add('application');
+      document.body.appendChild(applicationElement);
 
       const headerElement = document.createElement('header');
       headerElement.classList.add('header');
-
       applicationElement.appendChild(headerElement);
-      document.body.appendChild(applicationElement);
+
+      const logoElement = document.createElement('h1');
+      logoElement.classList.add('logo');
+      logoElement.textContent = logo;
+      headerElement.appendChild(logoElement);
     }
   };
 };
