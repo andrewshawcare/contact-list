@@ -4,10 +4,10 @@
   "description": "Manage a list of your personal contacts.",
   "main": "src/index.js",
   "scripts": {
-    "prestart": "r.js -o build.js && cp ./src/index.html ./build",
-    "start": "static --host-address 0.0.0.0 --port $PORT build",
+    "prestart": "webpack src/presenter.js dist/presenter.js && cp src/index.html dist",
+    "start": "static --host-address 0.0.0.0 --port $PORT dist",
     "lint": "semistandard | snazzy",
-    "test": "node test.js src/**/test.js"
+    "test": "node test.js ./src/**/test.js"
   },
   "repository": {
     "type": "git",
@@ -19,12 +19,10 @@
     "jasmine": "^2.5.3",
     "jsdom": "^9.11.0",
     "semistandard": "^9.2.1",
-    "snazzy": "^6.0.0"
+    "snazzy": "^6.0.0",
+    "webpack": "^2.2.1"
   },
   "dependencies": {
-    "amdclean": "^2.7.0",
-    "node-static": "^0.7.9",
-    "requirejs": "^2.3.2",
-    "text": "github:requirejs/text"
+    "node-static": "^0.7.9"
   }
 }
