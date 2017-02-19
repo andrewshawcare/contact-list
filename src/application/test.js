@@ -28,4 +28,9 @@ describe('Application', () => {
     Application().render();
     expect(document.body.querySelector('.application')).not.toBeNull();
   });
+
+  it('renders a header', () => {
+    Application().render();
+    expect(document.body.querySelector('.application .header')).not.toBeNull();
+  });
 });

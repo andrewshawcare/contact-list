@@ -12,6 +12,11 @@ module.exports = ({title = ''} = {}) => {
 
       const applicationElement = document.createElement('article');
       applicationElement.classList.add('application');
+
+      const headerElement = document.createElement('header');
+      headerElement.classList.add('header');
+
+      applicationElement.appendChild(headerElement);
       document.body.appendChild(applicationElement);
     }
   };
