@@ -38,4 +38,32 @@ describe('Contact list', function () {
     };
     expect(ContactList().add(contact).list()).toEqual([contact]);
   });
+
+  it('finds a list of contacts from the list, given a filter', () => {
+    const contacts = [
+      {
+        id: '1',
+        firstName: 'Amy',
+        lastName: 'Jones',
+        title: 'Sales Representative',
+        Address1: '90 Street',
+        City: 'Toronto',
+        State: 'Ontario'
+      },
+      {
+        id: '2',
+        firstName: 'James',
+        lastName: 'King',
+        title: 'President and CEO',
+        Address1: '90 Street',
+        City: 'Toronto',
+        State: 'Ontario'
+      }
+    ];
+
+    expect(
+      ContactList({contacts})
+        .find((contact) => (contact.id === '2'))
+    ).toEqual([contacts[1]]);
+  });
 });
