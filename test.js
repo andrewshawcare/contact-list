@@ -8,7 +8,10 @@ const jasmine = new (require('jasmine'))();
 Object.assign(window, jasmine.env);
 
 requirejs.config({
-  paths: {'node_modules': './node_modules'},
+  paths: {
+    'node_modules': './node_modules',
+    'text': 'node_modules/text/text'
+  },
   nodeRequire: require
 });
 

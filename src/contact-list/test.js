@@ -1,8 +1,10 @@
 /* global define, describe, it, expect */
-define(['./index'], function (ContactList) {
-  describe('Contact List', function () {
-    it('is defined', function () {
-      expect(ContactList).toBeDefined();
+define(['./index', 'text!./contacts.json'], function (ContactList, contactsText) {
+  const contacts = JSON.parse(contactsText);
+
+  describe('Contact list', function () {
+    it('lists contacts', function () {
+      expect(ContactList({contacts}).list()).toEqual(contacts);
     });
   });
 });

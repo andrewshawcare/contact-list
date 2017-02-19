@@ -1,4 +1,6 @@
 /* global define */
-define([], function () {
-  return {};
+define([], () => ({contacts = []}) => {
+  return {
+    list () { return contacts; }
+  };
 });
