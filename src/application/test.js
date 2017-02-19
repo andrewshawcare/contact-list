@@ -31,6 +31,6 @@ describe('Application', () => {
 
   it('renders a header', () => {
     Application().render();
-    expect(document.body.querySelector('.application .header')).not.toBeNull();
+    expect(document.body.querySelector('.application > .header')).not.toBeNull();
   });
 });
