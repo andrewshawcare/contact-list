@@ -6,7 +6,7 @@
   "scripts": {
     "develop": "nodemon --watch src --exec 'npm run lint && npm test && npm start'",
     "lint": "semistandard | snazzy",
-    "prestart": "webpack -p src/presenter.js dist/presenter.js && cp src/index.html dist",
+    "prestart": "webpack src/presenter.js dist/presenter.js && cp src/index.html dist",
     "start": "static --host-address 0.0.0.0 --port $PORT dist",
     "test": "node test.js ./src/**/test.js"
   },
