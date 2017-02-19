@@ -6,7 +6,7 @@
   "scripts": {
     "develop": "nodemon --watch src --exec 'npm run lint && npm test && npm start'",
     "lint": "semistandard | snazzy",
-    "prestart": "webpack src/presenter.js dist/presenter.js && cp src/index.html dist",
+    "prestart": "webpack -p src/presenter.js dist/presenter.js && cp src/index.html dist",
     "start": "static --host-address 0.0.0.0 --port $PORT dist",
     "test": "node test.js ./src/**/test.js"
   },
@@ -21,10 +21,10 @@
     "jsdom": "^9.11.0",
     "nodemon": "^1.11.0",
     "semistandard": "^9.2.1",
-    "snazzy": "^6.0.0",
-    "webpack": "^2.2.1"
+    "snazzy": "^6.0.0"
   },
   "dependencies": {
-    "node-static": "^0.7.9"
+    "node-static": "^0.7.9",
+    "webpack": "^2.2.1"
   }
 }
