@@ -27,16 +27,4 @@ describe('Application', () => {
     Application().render();
     expect(document.body.querySelector('.application')).not.toBeNull();
   });
-
-  it('renders a header', () => {
-    Application().render();
-    expect(document.body.querySelector('.application > .header')).not.toBeNull();
-  });
-
-  describe('Header', () => {
-    it('renders a logo', () => {
-      Application({ header: { logo: 'Contact List' } }).render();
-      expect(document.body.querySelector('.application > .header > .logo').textContent).toBe('Contact List');
-    });
-  });
 });
