@@ -9,6 +9,10 @@ module.exports = ({title = ''} = {}) => {
     },
     render: () => {
       document.title = title;
+
+      const applicationElement = document.createElement('article');
+      applicationElement.classList.add('application');
+      document.body.appendChild(applicationElement);
     }
   };
 };

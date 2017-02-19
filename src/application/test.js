@@ -23,4 +23,9 @@ describe('Application', () => {
     Application({title}).render();
     expect(document.title).toBe(title);
   });
+
+  it('renders an application', () => {
+    Application().render();
+    expect(document.body.querySelector('.application')).not.toBeNull();
+  });
 });
