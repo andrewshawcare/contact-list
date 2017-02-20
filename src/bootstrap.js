@@ -1,47 +1,72 @@
 const ContactList = require('./contact-list');
 const ApplicationElement = require('./application-element');
-
-// http://stackoverflow.com/a/28921801/492575
-const uuid = function () {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
-    /[xy]/g,
-    (match) => {
-      const randomNibble = Math.random() * 16 | 0;
-      const nibble = (match === 'y') ? (randomNibble & 0x3 | 0x8) : randomNibble;
-      return nibble.toString(16);
-    }
-  );
-};
+const uuid = require('./uuid');
 
 const contactList = ContactList({
-  contacts: window.localStorage.getItem('contacts') ? JSON.parse(window.localStorage.getItem('contacts')) : require('./contacts.json')
+  contacts: window.localStorage.getItem('contacts')
+    ? JSON.parse(window.localStorage.getItem('contacts'))
+    : require('./contacts.json')
 });
+let currentContact = window.localStorage.getItem('currentContact')
+  ? JSON.parse(window.localStorage.getItem('currentContact'))
+  : contactList.list()[0];
+let currentQuery = window.localStorage.getItem('currentQuery')
+  ? JSON.parse(window.localStorage.getItem('currentQuery'))
+  : '';
 
-const render = (contact) => {
+const render = ({contact = {}, query = ''}) => {
   document.body.innerHTML = '';
   document.body.appendChild(ApplicationElement({
     header: { logo: 'Contact List' },
     navigation: {
-      links: contactList.list().map((contact) => {
-        return {
-          title: `${contact.firstName} ${contact.lastName}`,
-          subtitle: contact.title,
-          onNavigate: () => { render(contact); }
-        };
-      }),
-      onAdd
+      query,
+      links: contactList
+        .find(({ firstName, lastName, title }) => (
+          firstName.match(query) ||
+          lastName.match(query) ||
+          title.match(query)
+        ))
+        .map(({ id, firstName, lastName, title }) => {
+          return {
+            id,
+            title: `${firstName} ${lastName}`,
+            subtitle: title
+          };
+        }),
+      onNavigate,
+      onAdd,
+      onSearch
     },
     contact: { contact, onEdit, onRemove }
   }));
 };
 
+const onNavigate = (link) => {
+  currentContact = contactList.find(({id}) => (link.id === id))[0];
+  window.localStorage.setItem('currentContact', JSON.stringify(currentContact));
+
+  render({ contact: currentContact, query: currentQuery });
+};
+
+const onSearch = (query) => {
+  currentQuery = query;
+  window.localStorage.setItem('currentQuery', currentQuery);
+
+  render({contact: currentContact, query: currentQuery});
+
+  document.body.querySelector('.application .navigation .search').focus();
+};
+
 const onAdd = () => {
   contactList.add({ id: uuid(), firstName: 'John', lastName: 'Smith', title: 'Employee' });
-  const contacts = contactList.list();
 
+  const contacts = contactList.list();
   window.localStorage.setItem('contacts', JSON.stringify(contacts));
 
-  render(contacts[contacts.length - 1]);
+  currentContact = contacts[contacts.length - 1];
+  window.localStorage.setItem('currentContact', JSON.stringify(currentContact));
+
+  render({contact: currentContact, query: currentQuery});
 };
 
 const onEdit = (contact) => {
@@ -54,16 +79,19 @@ const onEdit = (contact) => {
   });
   window.localStorage.setItem('contacts', JSON.stringify(contactList.list()));
 
-  render(contact);
+  render({contact: currentContact, query: currentQuery});
   document.body.querySelector(`.application .contact ${parentSelector} .value`).focus();
 };
 
 const onRemove = (contact) => {
   contactList.remove(({id}) => (contact.id === id));
-  console.log(contactList.list());
+
   window.localStorage.setItem('contacts', JSON.stringify(contactList.list()));
 
-  render(contactList.list()[0]);
+  currentContact = contactList.list()[0] || {};
+  window.localStorage.setItem('currentContact', JSON.stringify(currentContact));
+
+  render({ contact: currentContact, query: currentQuery });
 };
 
-render(contactList.list()[0]);
+render({ contact: currentContact, query: currentQuery });
