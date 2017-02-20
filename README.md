@@ -13,7 +13,7 @@ This application uses the [LocalStorage API](https://developer.mozilla.org/en-US
 
 ## Environment variables
 
-You must have the `PORT` environment variable set to a free local port in the range of 1024 - 65535 (0 - 65535 if running with elevated privileges). This will be the port the application will listen for incoming connections on.
+You must have the `PORT` environment variable set to a free local port in the range of 1024 - 65535 (0 - 65535 if running with elevated privileges). This will be the port the application will listen on for incoming connections.
 
 ## Scripts
 
