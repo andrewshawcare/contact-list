@@ -1,62 +1,90 @@
-const createInputElement = ({classList = [], type = 'text', value = ''} = {}) => {
-  const inputElement = document.createElement('input');
-  inputElement.classList.add.apply(inputElement.classList, classList);
-  inputElement.setAttribute('type', type);
-  inputElement.value = value;
-  return inputElement;
+const createFieldElement = ({
+  classList = [],
+  type,
+  label = '',
+  value = '',
+  disabled = false
+} = {}) => {
+  const fieldElement = document.createElement('div');
+  fieldElement.classList.add('field');
+  fieldElement.classList.add.apply(fieldElement.classList, classList);
+
+  const labelElement = document.createElement('label');
+  labelElement.classList.add('label');
+  labelElement.textContent = label;
+  fieldElement.appendChild(labelElement);
+
+  const valueElement = document.createElement('input');
+  valueElement.classList.add('value');
+  valueElement.setAttribute('type', type);
+  valueElement.setAttribute('disabled', disabled);
+  valueElement.value = value;
+  fieldElement.appendChild(valueElement);
+
+  return fieldElement;
 };
 
-module.exports = ({
-  id = '',
-  firstName = '',
-  lastName = '',
-  title = '',
-  address = '',
-  city = '',
-  province = ''
-} = {}) => {
+module.exports = ({contact = {}} = {}) => {
+  const {
+    id = '',
+    firstName = '',
+    lastName = '',
+    title = '',
+    address = '',
+    city = '',
+    province = ''
+  } = contact;
+
   const contactElement = document.createElement('section');
   contactElement.classList.add('contact');
 
-  contactElement.appendChild(createInputElement({
+  contactElement.appendChild(createFieldElement({
     classList: ['id'],
-    type: 'hidden',
-    value: id
+    type: 'text',
+    label: 'ID',
+    value: id,
+    disabled: true
   }));
 
-  contactElement.appendChild(createInputElement({
+  contactElement.appendChild(createFieldElement({
     classList: ['first', 'name'],
     type: 'text',
+    label: 'First name',
     value: firstName
   }));
 
-  contactElement.appendChild(createInputElement({
+  contactElement.appendChild(createFieldElement({
     classList: ['last', 'name'],
     type: 'text',
+    label: 'Last name',
     value: lastName
   }));
 
-  contactElement.appendChild(createInputElement({
+  contactElement.appendChild(createFieldElement({
     classList: ['title'],
     type: 'text',
+    label: 'Title',
     value: title
   }));
 
-  contactElement.appendChild(createInputElement({
+  contactElement.appendChild(createFieldElement({
     classList: ['address'],
     type: 'text',
+    label: 'Address',
     value: address
   }));
 
-  contactElement.appendChild(createInputElement({
+  contactElement.appendChild(createFieldElement({
     classList: ['city'],
     type: 'text',
+    label: 'City',
     value: city
   }));
 
-  contactElement.appendChild(createInputElement({
+  contactElement.appendChild(createFieldElement({
     classList: ['province'],
     type: 'text',
+    label: 'Province',
     value: province
   }));
 
