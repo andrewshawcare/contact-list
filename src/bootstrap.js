@@ -92,9 +92,7 @@ const contactList = ContactList({
     : require('./contacts.json')
 });
 
-let currentQuery = window.localStorage.getItem('currentQuery')
-  ? JSON.parse(window.localStorage.getItem('currentQuery'))
-  : '';
+let currentQuery = window.localStorage.getItem('currentQuery') || '';
 
 let currentContact;
 if (contactList.list().length === 0) {
