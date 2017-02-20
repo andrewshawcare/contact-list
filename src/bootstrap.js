@@ -5,8 +5,8 @@ const uuid = require('./uuid');
 const render = ({contact = {}, query = ''}) => {
   document.body.innerHTML = '';
   document.body.appendChild(ApplicationElement({
-    header: { logo: 'Contact List' },
-    navigation: {
+    headerElement: { logo: 'Contact List' },
+    navigationElement: {
       query,
       links: contactList
         .find(({ firstName, lastName, title }) => (
@@ -25,7 +25,7 @@ const render = ({contact = {}, query = ''}) => {
       onAdd,
       onSearch
     },
-    contact: { contact, onEdit, onRemove }
+    contactElement: { contact, onEdit, onRemove }
   }));
 };
 
