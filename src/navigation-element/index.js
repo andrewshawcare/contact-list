@@ -4,6 +4,7 @@ module.exports = ({ links = [], onAdd = () => {}, onSearch = () => {} } = {}) =>
 
   const searchElement = document.createElement('input');
   searchElement.classList.add('search');
+  searchElement.setAttribute('type', 'search');
   searchElement.addEventListener('input', (event) => { onSearch(event.target.value); });
   navigationElement.appendChild(searchElement);
 
