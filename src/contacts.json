@@ -4,44 +4,44 @@
         "firstName": "Amy",
         "lastName": "Jones",
         "title": "Sales Representative",
-        "Address1": "90 Street",
-        "City": "Toronto",
-        "State": "Ontario"
+        "address": "372 Harbord Street",
+        "city": "Toronto",
+        "province": "Ontario"
     },
     {
         "id": "2",
         "firstName": "James",
         "lastName": "King",
         "title": "President and CEO",
-        "Address1": "90 Street",
-        "City": "Toronto",
-        "State": "Ontario"
+        "address": "2 Bloor Street East",
+        "city": "Toronto",
+        "province": "Ontario"
     },
     {
         "id": "3",
         "firstName": "Ray",
         "lastName": "Moore",
         "title": "Vice President of Sales",
-        "Address1": "2323 Dundas St.",
-        "City": "Mississauga",
-        "State": "Ontario"
+        "address": "375 Church Street",
+        "city": "Mississauga",
+        "province": "Ontario"
     },
     {
         "id": "4",
         "firstName": "John",
         "lastName": "Williams",
         "title": "Vice President of Engineering",
-        "Address1": "1343 Steels Ave.",
-        "City": "Brampton",
-        "State": "Ontario"
+        "address": "237 Dundas Street East",
+        "city": "Brampton",
+        "province": "Ontario"
     },
     {
         "id": "5",
         "firstName": "Joe",
         "lastName": "Doe",
         "title": "Sales Representative",
-        "Address1": "3023 Parkerhill Rd.",
-        "City": "Mississauga",
-        "State": "Ontario"
+        "address": "3023 Parkerhill Road",
+        "city": "Mississauga",
+        "province": "Ontario"
     }
 ]
