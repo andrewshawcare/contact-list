@@ -12,7 +12,8 @@ module.exports = ({
   lastName = '',
   title = '',
   address = '',
-  city = ''
+  city = '',
+  province = ''
 } = {}) => {
   const contactElement = document.createElement('section');
   contactElement.classList.add('contact');
@@ -51,6 +52,12 @@ module.exports = ({
     classList: ['city'],
     type: 'text',
     value: city
+  }));
+
+  contactElement.appendChild(createInputElement({
+    classList: ['province'],
+    type: 'text',
+    value: province
   }));
 
   return contactElement;

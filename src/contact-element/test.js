@@ -35,4 +35,9 @@ describe('Contact element', () => {
     const city = 'Fakeville';
     expect(ContactElement({ city }).querySelector('.city').value).toBe(city);
   });
+
+  it('has a province', () => {
+    const province = 'Fakereal';
+    expect(ContactElement({ province }).querySelector('.province').value).toBe(province);
+  });
 });
