@@ -7,10 +7,14 @@ describe('Application element', () => {
   });
 
   it('has a header', () => {
-    expect(ApplicationElement().querySelector('.application > .header')).not.toBeNull();
+    expect(ApplicationElement().querySelector('.header')).not.toBeNull();
   });
 
   it('has a navigation', () => {
-    expect(ApplicationElement().querySelector('.application > .navigation')).not.toBeNull();
+    expect(ApplicationElement().querySelector('.navigation')).not.toBeNull();
+  });
+
+  it('has a contact', () => {
+    expect(ApplicationElement().querySelector('.contact')).not.toBeNull();
   });
 });
