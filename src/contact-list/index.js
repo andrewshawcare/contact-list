@@ -11,6 +11,10 @@ module.exports = ({contacts = []} = {}) => {
         return find(contact) ? replace(contact) : contact;
       });
       return this;
+    },
+    remove (filter) {
+      contacts = contacts.filter((contact) => !filter(contact));
+      return this;
     }
   };
 };

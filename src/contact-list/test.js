@@ -22,6 +22,15 @@ describe('Contact list', function () {
         Address1: '90 Street',
         City: 'Toronto',
         State: 'Ontario'
+      },
+      {
+        id: '3',
+        firstName: 'James',
+        lastName: 'King',
+        title: 'President and CEO',
+        Address1: '90 Street',
+        City: 'Toronto',
+        State: 'Ontario'
       }
     ];
   });
@@ -47,5 +56,12 @@ describe('Contact list', function () {
     expect(
       ContactList({contacts}).edit({find, replace}).find(find)
     ).toEqual([replace(contacts[1])]);
+  });
+
+  it('allows removal of contacts from the list, given a filter', () => {
+    const contactList = ContactList({contacts})
+      .remove((contact) => (contact.id === '2'))
+      .list();
+    expect(contactList).toEqual([contacts[0], ...contacts.slice(2)]);
   });
 });
