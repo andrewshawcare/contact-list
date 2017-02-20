@@ -19,7 +19,7 @@ const render = (contact) => {
         };
       })
     },
-    contact
+    contact: { contact }
   }));
 };
 
