@@ -10,4 +10,9 @@ describe('Contact element', () => {
     const id = '1';
     expect(ContactElement({ id }).querySelector('.id').value).toBe(id);
   });
+
+  it('has a first name', () => {
+    const firstName = 'John';
+    expect(ContactElement({ firstName }).querySelector('.first.name').value).toBe(firstName);
+  });
 });
