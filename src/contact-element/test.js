@@ -30,4 +30,9 @@ describe('Contact element', () => {
     const address = '123 Fake Street';
     expect(ContactElement({ address }).querySelector('.address').value).toBe(address);
   });
+
+  it('has a city', () => {
+    const city = 'Fakeville';
+    expect(ContactElement({ city }).querySelector('.city').value).toBe(city);
+  });
 });
