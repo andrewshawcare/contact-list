@@ -5,9 +5,12 @@ module.exports = ({ links = [] } = {}) => {
   const linkListElement = document.createElement('ul');
   linkListElement.classList.add('link', 'list');
 
-  links.forEach(({ title = '', subtitle = '' } = {}) => {
+  links.forEach(({ title = '', subtitle = '', onNavigate } = {}) => {
     const linkElement = document.createElement('li');
     linkElement.classList.add('link');
+    if (typeof onNavigate === 'function') {
+      linkElement.addEventListener('click', onNavigate);
+    }
 
     const titleElement = document.createElement('div');
     titleElement.classList.add('title');
