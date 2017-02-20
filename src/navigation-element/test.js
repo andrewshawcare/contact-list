@@ -18,10 +18,16 @@ describe('Navigation element', () => {
   it('performs the expected behaviour on navigation', (done) => {
     const links = [
       { title: 'First title', subtitle: 'First subtitle' },
-      { title: 'Second title', subtitle: 'Second subtitle', onNavigate: done },
+      { title: 'Second title', subtitle: 'Second subtitle' },
       { title: 'Third title', subtitle: 'Third subtitle' }
     ];
-    NavigationElement({ links }).querySelector('.link.list > .link:nth-of-type(0n + 2)').click();
+    NavigationElement({
+      links,
+      onNavigate: (link) => {
+        expect(link).toEqual(links[1]);
+        done();
+      }
+    }).querySelector('.link.list > .link:nth-of-type(0n + 2)').click();
   });
 
   it('has an add action', () => {

@@ -1,22 +1,28 @@
-module.exports = ({ links = [], onAdd = () => {}, onSearch = () => {} } = {}) => {
+module.exports = ({
+  query = '',
+  links = [],
+  onNavigate = () => {},
+  onAdd = () => {},
+  onSearch = () => {}
+} = {}) => {
   const navigationElement = document.createElement('nav');
   navigationElement.classList.add('navigation');
 
   const searchElement = document.createElement('input');
   searchElement.classList.add('search');
   searchElement.setAttribute('type', 'search');
+  searchElement.value = query;
   searchElement.addEventListener('input', (event) => { onSearch(event.target.value); });
   navigationElement.appendChild(searchElement);
 
   const linkListElement = document.createElement('ul');
   linkListElement.classList.add('link', 'list');
 
-  links.forEach(({ title = '', subtitle = '', onNavigate } = {}) => {
+  links.forEach((link = {}) => {
+    const { title, subtitle } = link;
     const linkElement = document.createElement('li');
     linkElement.classList.add('link');
-    if (typeof onNavigate === 'function') {
-      linkElement.addEventListener('click', onNavigate);
-    }
+    linkElement.addEventListener('click', () => { onNavigate(link); });
 
     const titleElement = document.createElement('div');
     titleElement.classList.add('title');
