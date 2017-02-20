@@ -1,9 +1,11 @@
-const Application = require('./application');
-Application({
-  title: 'Contact List',
-  application: {
-    header: {
-      logo: 'Contact List'
-    }
+const contacts = window.localStorage.getItem('contacts') ? JSON.parse(window.localStorage.getItem('contacts')) : require('./contacts.json');
+const ContactList = require('./contact-list');
+const contactList = ContactList({contacts});
+console.log(contactList.list());
+
+const ApplicationElement = require('./application-element');
+document.body.appendChild(ApplicationElement({
+  header: {
+    logo: 'Contact List'
   }
-}).render();
+}));
