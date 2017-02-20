@@ -39,7 +39,7 @@ describe('Navigation element', () => {
   it('performs the expected behaviour on search', (done) => {
     const expectedQuery = 'asdf';
     const onSearch = (actualQuery) => {
-      expect(searchElement.value).toBe('actualQuery');
+      expect(searchElement.value).toBe(actualQuery);
       expect(actualQuery).toBe(expectedQuery);
       done();
     };
