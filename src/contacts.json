@@ -21,7 +21,7 @@
         "id": "3",
         "firstName": "Ray",
         "lastName": "Moore",
-        "title": "VPofSales",
+        "title": "Vice President of Sales",
         "Address1": "2323 Dundas St.",
         "City": "Mississauga",
         "State": "Ontario"
@@ -30,7 +30,7 @@
         "id": "4",
         "firstName": "John",
         "lastName": "Williams",
-        "title": "VPofEngineering",
+        "title": "Vice President of Engineering",
         "Address1": "1343 Steels Ave.",
         "City": "Brampton",
         "State": "Ontario"
@@ -39,7 +39,7 @@
         "id": "5",
         "firstName": "Joe",
         "lastName": "Doe",
-        "title": "SalesRepresentative",
+        "title": "Sales Representative",
         "Address1": "3023 Parkerhill Rd.",
         "City": "Mississauga",
         "State": "Ontario"
