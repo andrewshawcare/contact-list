@@ -1,4 +1,4 @@
-module.exports = ({ links = [] } = {}) => {
+module.exports = ({ links = [], onAdd = () => {} } = {}) => {
   const navigationElement = document.createElement('nav');
   navigationElement.classList.add('navigation');
 
@@ -30,6 +30,7 @@ module.exports = ({ links = [] } = {}) => {
   const addElement = document.createElement('button');
   addElement.classList.add('add');
   addElement.textContent = 'Add contact';
+  addElement.addEventListener('click', () => { onAdd(); });
   navigationElement.appendChild(addElement);
 
   return navigationElement;

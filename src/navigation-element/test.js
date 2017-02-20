@@ -27,4 +27,8 @@ describe('Navigation element', () => {
   it('has an add action', () => {
     expect(NavigationElement().querySelector('.add')).not.toBeNull();
   });
+
+  it('performs the expected behaviour on add', (done) => {
+    NavigationElement({ onAdd: done }).querySelector('.add').click();
+  });
 });
