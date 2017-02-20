@@ -7,5 +7,13 @@ const ApplicationElement = require('./application-element');
 document.body.appendChild(ApplicationElement({
   header: {
     logo: 'Contact List'
+  },
+  navigation: {
+    links: contactList.list().map((contact) => {
+      return {
+        title: `${contact.firstName} ${contact.lastName}`,
+        subtitle: contact.title
+      };
+    })
   }
 }));

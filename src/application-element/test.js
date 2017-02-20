@@ -9,4 +9,8 @@ describe('Application element', () => {
   it('has a header', () => {
     expect(ApplicationElement().querySelector('.application > .header')).not.toBeNull();
   });
+
+  it('has a navigation', () => {
+    expect(ApplicationElement().querySelector('.application > .navigation')).not.toBeNull();
+  });
 });
