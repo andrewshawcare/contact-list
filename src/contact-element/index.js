@@ -1,4 +1,9 @@
-module.exports = ({ id = '', firstName = '' } = {}) => {
+module.exports = ({
+  id = '',
+  firstName = '',
+  lastName = '',
+  title = ''
+} = {}) => {
   const contactElement = document.createElement('section');
   contactElement.classList.add('contact');
 
@@ -13,6 +18,18 @@ module.exports = ({ id = '', firstName = '' } = {}) => {
   firstNameElement.setAttribute('type', 'text');
   firstNameElement.value = firstName;
   contactElement.appendChild(firstNameElement);
+
+  const lastNameElement = document.createElement('input');
+  lastNameElement.classList.add('last', 'name');
+  lastNameElement.setAttribute('type', 'text');
+  lastNameElement.value = lastName;
+  contactElement.appendChild(lastNameElement);
+
+  const titleElement = document.createElement('input');
+  titleElement.classList.add('title');
+  titleElement.setAttribute('type', 'text');
+  titleElement.value = title;
+  contactElement.appendChild(titleElement);
 
   return contactElement;
 };

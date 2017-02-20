@@ -15,4 +15,14 @@ describe('Contact element', () => {
     const firstName = 'John';
     expect(ContactElement({ firstName }).querySelector('.first.name').value).toBe(firstName);
   });
+
+  it('has a last name', () => {
+    const lastName = 'Smith';
+    expect(ContactElement({ lastName }).querySelector('.last.name').value).toBe(lastName);
+  });
+
+  it('has a title', () => {
+    const title = 'Developer';
+    expect(ContactElement({ title }).querySelector('.title').value).toBe(title);
+  });
 });
