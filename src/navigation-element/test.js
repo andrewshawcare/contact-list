@@ -70,4 +70,16 @@ describe('Navigation element', () => {
       activeLink: (link) => (link.title === 'Second title')
     }).querySelector('.active.link .title').textContent).toBe('Second title');
   });
+
+  it('emboldens sections of links matching the query', () => {
+    const links = [
+      { title: 'First title', subtitle: 'First subtitle' },
+      { title: 'Second title', subtitle: 'Second subtitle' },
+      { title: 'Third title', subtitle: 'Third subtitle' }
+    ];
+    const navigationElement = NavigationElement({ links, query: 'Thi' });
+    const thirdLinkElement = navigationElement.querySelector('.link:nth-of-type(0n + 3)');
+    expect(thirdLinkElement.querySelector('.title').innerHTML).toBe('<strong>Thi</strong>rd title');
+    expect(thirdLinkElement.querySelector('.subtitle').innerHTML).toBe('<strong>Thi</strong>rd subtitle');
+  });
 });
