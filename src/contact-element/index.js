@@ -1,3 +1,11 @@
+const createInputElement = ({classList = [], type = 'text', value = ''} = {}) => {
+  const inputElement = document.createElement('input');
+  inputElement.classList.add.apply(inputElement.classList, classList);
+  inputElement.setAttribute('type', type);
+  inputElement.value = value;
+  return inputElement;
+};
+
 module.exports = ({
   id = '',
   firstName = '',
@@ -8,35 +16,35 @@ module.exports = ({
   const contactElement = document.createElement('section');
   contactElement.classList.add('contact');
 
-  const idElement = document.createElement('input');
-  idElement.classList.add('id');
-  idElement.setAttribute('type', 'hidden');
-  idElement.value = id;
-  contactElement.appendChild(idElement);
+  contactElement.appendChild(createInputElement({
+    classList: ['id'],
+    type: 'hidden',
+    value: id
+  }));
 
-  const firstNameElement = document.createElement('input');
-  firstNameElement.classList.add('first', 'name');
-  firstNameElement.setAttribute('type', 'text');
-  firstNameElement.value = firstName;
-  contactElement.appendChild(firstNameElement);
+  contactElement.appendChild(createInputElement({
+    classList: ['first', 'name'],
+    type: 'text',
+    value: firstName
+  }));
 
-  const lastNameElement = document.createElement('input');
-  lastNameElement.classList.add('last', 'name');
-  lastNameElement.setAttribute('type', 'text');
-  lastNameElement.value = lastName;
-  contactElement.appendChild(lastNameElement);
+  contactElement.appendChild(createInputElement({
+    classList: ['last', 'name'],
+    type: 'text',
+    value: lastName
+  }));
 
-  const titleElement = document.createElement('input');
-  titleElement.classList.add('title');
-  titleElement.setAttribute('type', 'text');
-  titleElement.value = title;
-  contactElement.appendChild(titleElement);
+  contactElement.appendChild(createInputElement({
+    classList: ['title'],
+    type: 'text',
+    value: title
+  }));
 
-  const addressElement = document.createElement('input');
-  addressElement.classList.add('address');
-  addressElement.setAttribute('type', 'text');
-  addressElement.value = address;
-  contactElement.appendChild(addressElement);
+  contactElement.appendChild(createInputElement({
+    classList: ['address'],
+    type: 'address',
+    value: address
+  }));
 
   return contactElement;
 };
