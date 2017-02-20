@@ -54,4 +54,8 @@ describe('Navigation element', () => {
     searchElement.value = expectedQuery;
     searchElement.dispatchEvent(new window.Event('input'));
   });
+
+  it('has a search placeholder', () => {
+    expect(NavigationElement().querySelector('.search').getAttribute('placeholder')).toBe('Search');
+  });
 });

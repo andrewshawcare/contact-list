@@ -11,6 +11,7 @@ module.exports = ({
   const searchElement = document.createElement('input');
   searchElement.classList.add('search');
   searchElement.setAttribute('type', 'search');
+  searchElement.setAttribute('placeholder', 'Search');
   searchElement.value = query;
   searchElement.addEventListener('input', (event) => { onSearch(event.target.value); });
   navigationElement.appendChild(searchElement);
