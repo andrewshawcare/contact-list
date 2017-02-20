@@ -49,13 +49,13 @@ describe('Contact element', () => {
   });
 
   it('performs the expected behaviour on edit', (done) => {
-    const contact = { city: 'Originalville' };
+    const originalContact = { city: 'Originalville' };
     const editedCity = 'Editedville';
     const onEdit = (editedContact) => {
       expect(editedContact).toEqual({ city: editedCity });
       done();
     };
-    const cityValueElement = ContactElement({contact, onEdit}).querySelector('.city > .value');
+    const cityValueElement = ContactElement({ originalContact, onEdit }).querySelector('.city > .value');
     cityValueElement.value = editedCity;
     cityValueElement.dispatchEvent(new window.Event('input'));
   });
