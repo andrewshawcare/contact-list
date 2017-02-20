@@ -115,5 +115,10 @@ module.exports = ({contact = {}, onEdit = () => {}} = {}) => {
     }
   }));
 
+  const deleteElement = document.createElement('button');
+  deleteElement.classList.add('remove');
+  deleteElement.textContent = 'Remove';
+  contactElement.appendChild(deleteElement);
+
   return contactElement;
 };

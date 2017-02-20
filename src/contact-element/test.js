@@ -59,4 +59,8 @@ describe('Contact element', () => {
     cityValueElement.value = editedCity;
     cityValueElement.dispatchEvent(new window.Event('input'));
   });
+
+  it('has a remove action', () => {
+    expect(ContactElement().querySelector('.remove')).not.toBeNull();
+  });
 });
