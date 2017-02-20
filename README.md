@@ -7,6 +7,10 @@ Manage a list of your personal contacts.
 
 This project is built on Node.js. You can download Node.js [here](https://nodejs.org/en/download/).
 
+## Persistence
+
+This application uses the [LocalStorage API](https://developer.mozilla.org/en-US/docs/Web/API/Storage/LocalStorage) for persistence. If you'd like to clear your contacts, please use your browser's built-in developer tools.
+
 ## Environment variables
 
 You must have the `PORT` environment variable set to a free local port in the range of 1024 - 65535 (0 - 65535 if running with elevated privileges). This will be the port the application will listen for incoming connections on.
