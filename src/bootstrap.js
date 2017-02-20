@@ -1,8 +1,9 @@
 const ContactList = require('./contact-list');
 const ApplicationElement = require('./application-element');
 
-const contacts = window.localStorage.getItem('contacts') ? JSON.parse(window.localStorage.getItem('contacts')) : require('./contacts.json');
-const contactList = ContactList({contacts});
+const contactList = ContactList({
+  contacts: window.localStorage.getItem('contacts') ? JSON.parse(window.localStorage.getItem('contacts')) : require('./contacts.json')
+});
 
 const render = (contact) => {
   document.body.innerHTML = '';
@@ -17,11 +18,11 @@ const render = (contact) => {
         };
       })
     },
-    contact: { contact, onEdit: handleEdit }
+    contact: { contact, onEdit, onRemove }
   }));
 };
 
-const handleEdit = (contact) => {
+const onEdit = (contact) => {
   const activeElementParentClassList = document.activeElement.parentElement.classList;
   const parentSelector = `.${Array.from(activeElementParentClassList).join('.')}`;
 
@@ -35,4 +36,12 @@ const handleEdit = (contact) => {
   document.body.querySelector(`.application .contact ${parentSelector} .value`).focus();
 };
 
-render(contacts[0]);
+const onRemove = (contact) => {
+  contactList.remove(({id}) => (contact.id === id));
+  console.log(contactList.list());
+  window.localStorage.setItem('contacts', JSON.stringify(contactList.list()));
+
+  render(contactList.list()[0]);
+};
+
+render(contactList.list()[0]);
