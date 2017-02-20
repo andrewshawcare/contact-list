@@ -1,6 +1,7 @@
 module.exports = ({
   query = '',
   links = [],
+  activeLink = () => {},
   onNavigate = () => {},
   onAdd = () => {},
   onSearch = () => {}
@@ -23,6 +24,9 @@ module.exports = ({
     const { title, subtitle } = link;
     const linkElement = document.createElement('li');
     linkElement.classList.add('link');
+    if (activeLink(link)) {
+      linkElement.classList.add('active');
+    }
     linkElement.addEventListener('click', () => { onNavigate(link); });
 
     const titleElement = document.createElement('div');

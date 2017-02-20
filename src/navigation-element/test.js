@@ -58,4 +58,16 @@ describe('Navigation element', () => {
   it('has a search placeholder', () => {
     expect(NavigationElement().querySelector('.search').getAttribute('placeholder')).toBe('Search');
   });
+
+  it('has an active link', () => {
+    const links = [
+      { title: 'First title', subtitle: 'First subtitle' },
+      { title: 'Second title', subtitle: 'Second subtitle' },
+      { title: 'Third title', subtitle: 'Third subtitle' }
+    ];
+    expect(NavigationElement({
+      links,
+      activeLink: (link) => (link.title === 'Second title')
+    }).querySelector('.active.link .title').textContent).toBe('Second title');
+  });
 });
