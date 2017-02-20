@@ -63,4 +63,8 @@ describe('Contact element', () => {
   it('has a remove action', () => {
     expect(ContactElement().querySelector('.remove')).not.toBeNull();
   });
+
+  it('performs the expected behaviour on removal', (done) => {
+    ContactElement({ onRemoval: done }).querySelector('.remove').click();
+  });
 });

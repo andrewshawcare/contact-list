@@ -30,7 +30,7 @@ const createFieldElement = ({
   return fieldElement;
 };
 
-module.exports = ({contact = {}, onEdit = () => {}} = {}) => {
+module.exports = ({contact = {}, onEdit = () => {}, onRemoval = () => {}} = {}) => {
   const {
     id = '',
     firstName = '',
@@ -118,6 +118,7 @@ module.exports = ({contact = {}, onEdit = () => {}} = {}) => {
   const deleteElement = document.createElement('button');
   deleteElement.classList.add('remove');
   deleteElement.textContent = 'Remove';
+  deleteElement.addEventListener('click', onRemoval);
   contactElement.appendChild(deleteElement);
 
   return contactElement;
