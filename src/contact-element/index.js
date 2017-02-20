@@ -118,7 +118,7 @@ module.exports = ({contact = {}, onEdit = () => {}, onRemoval = () => {}} = {}) 
   const deleteElement = document.createElement('button');
   deleteElement.classList.add('remove');
   deleteElement.textContent = 'Remove';
-  deleteElement.addEventListener('click', onRemoval);
+  deleteElement.addEventListener('click', () => { onRemoval(contact); });
   contactElement.appendChild(deleteElement);
 
   return contactElement;

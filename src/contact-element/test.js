@@ -55,7 +55,7 @@ describe('Contact element', () => {
       expect(editedContact).toEqual({ city: editedCity });
       done();
     };
-    const cityValueElement = ContactElement({ originalContact, onEdit }).querySelector('.city > .value');
+    const cityValueElement = ContactElement({ contact: originalContact, onEdit }).querySelector('.city > .value');
     cityValueElement.value = editedCity;
     cityValueElement.dispatchEvent(new window.Event('input'));
   });
@@ -65,6 +65,13 @@ describe('Contact element', () => {
   });
 
   it('performs the expected behaviour on removal', (done) => {
-    ContactElement({ onRemoval: done }).querySelector('.remove').click();
+    const originalContact = { city: 'Originalville' };
+    ContactElement({
+      contact: originalContact,
+      onRemoval: (removedContact) => {
+        expect(removedContact).toEqual(originalContact);
+        done();
+      }
+    }).querySelector('.remove').click();
   });
 });
