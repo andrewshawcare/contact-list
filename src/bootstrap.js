@@ -68,6 +68,9 @@ const onEdit = (contact) => {
   });
   window.localStorage.setItem('contacts', JSON.stringify(contactList.list()));
 
+  currentContact = contact;
+  window.localStorage.setItem('currentContact', JSON.stringify(currentContact));
+
   render({contact: currentContact, query: currentQuery});
   document.body.querySelector(`.application .contact ${parentSelector} .value`).focus();
 };
