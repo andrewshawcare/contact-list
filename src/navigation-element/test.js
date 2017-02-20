@@ -35,4 +35,17 @@ describe('Navigation element', () => {
   it('has a search action', () => {
     expect(NavigationElement().querySelector('.search')).not.toBeNull();
   });
+
+  it('performs the expected behaviour on search', (done) => {
+    const expectedQuery = 'asdf';
+    const navigationElement = NavigationElement({
+      onSearch: (actualQuery) => {
+        expect(actualQuery).toBe(expectedQuery);
+        done();
+      }
+    });
+    const searchElement = navigationElement.querySelector('.search');
+    searchElement.value = expectedQuery;
+    searchElement.dispatchEvent(new window.Event('input'));
+  });
 });

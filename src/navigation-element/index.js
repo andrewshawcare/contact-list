@@ -1,9 +1,10 @@
-module.exports = ({ links = [], onAdd = () => {} } = {}) => {
+module.exports = ({ links = [], onAdd = () => {}, onSearch = () => {} } = {}) => {
   const navigationElement = document.createElement('nav');
   navigationElement.classList.add('navigation');
 
   const searchElement = document.createElement('input');
   searchElement.classList.add('search');
+  searchElement.addEventListener('input', (event) => { onSearch(event.target.value); });
   navigationElement.appendChild(searchElement);
 
   const linkListElement = document.createElement('ul');
