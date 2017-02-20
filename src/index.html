@@ -3,6 +3,62 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Contact List</title>
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      body, button, input {
+        font-size: 1rem;
+        line-height: 1.618em;
+        font-family: sans-serif;
+      }
+      input {
+        border: none;
+        border-bottom: 0.1rem solid black;
+      }
+      button {
+        width: 100%;
+        border: none;
+        background-color: black;
+        color: white;
+        padding: 0.5rem;
+      }
+      .application {
+        padding: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .application > * {
+        padding: 1rem;
+      }
+      .application .header {
+        width: 100%;
+      }
+      .application .navigation {
+        max-width: 20rem;
+      }
+      .application .contact {
+        max-width: 30rem;
+        flex-grow: 1;
+      }
+      .navigation .link.list {
+        list-style-type: none;
+        margin: 1rem 0;
+        padding: 0;
+      }
+      .link.list .link {
+        margin: 0.5rem 0;
+      }
+      .link.list .link .subtitle {
+        font-size: small;
+      }
+      .field {
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
   </head>
   <body>
     <script src="bootstrap.js"></script>
