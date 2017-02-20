@@ -47,4 +47,16 @@ describe('Contact element', () => {
     expect(ContactElement({ contact: { province } }).querySelector('.province > .label').textContent).toBe('Province');
     expect(ContactElement({ contact: { province } }).querySelector('.province > .value').value).toBe(province);
   });
+
+  it('performs the expected behaviour on edit', (done) => {
+    const contact = { city: 'Originalville' };
+    const editedCity = 'Editedville';
+    const onEdit = (editedContact) => {
+      expect(editedContact).toEqual({ city: editedCity });
+      done();
+    };
+    const cityValueElement = ContactElement({contact, onEdit}).querySelector('.city > .value');
+    cityValueElement.value = editedCity;
+    cityValueElement.dispatchEvent(new window.Event('input'));
+  });
 });
