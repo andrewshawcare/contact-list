@@ -21,6 +21,7 @@ const render = ({contact = {}, query = ''}) => {
             subtitle: title
           };
         }),
+      activeLink: ({id}) => (contact.id === id),
       onNavigate,
       onAdd,
       onSearch
