@@ -23,4 +23,8 @@ describe('Navigation element', () => {
     ];
     NavigationElement({ links }).querySelector('.link.list > .link:nth-of-type(0n + 2)').click();
   });
+
+  it('has an add action', () => {
+    expect(NavigationElement().querySelector('.add')).not.toBeNull();
+  });
 });

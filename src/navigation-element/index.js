@@ -27,5 +27,10 @@ module.exports = ({ links = [] } = {}) => {
 
   navigationElement.appendChild(linkListElement);
 
+  const addElement = document.createElement('button');
+  addElement.classList.add('add');
+  addElement.textContent = 'Add contact';
+  navigationElement.appendChild(addElement);
+
   return navigationElement;
 };
