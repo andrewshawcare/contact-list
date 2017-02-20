@@ -68,7 +68,7 @@ describe('Contact element', () => {
     const originalContact = { city: 'Originalville' };
     ContactElement({
       contact: originalContact,
-      onRemoval: (removedContact) => {
+      onRemove: (removedContact) => {
         expect(removedContact).toEqual(originalContact);
         done();
       }
