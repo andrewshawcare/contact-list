@@ -25,4 +25,9 @@ describe('Contact element', () => {
     const title = 'Developer';
     expect(ContactElement({ title }).querySelector('.title').value).toBe(title);
   });
+
+  it('has an address', () => {
+    const address = '123 Fake Street';
+    expect(ContactElement({ address }).querySelector('.address').value).toBe(address);
+  });
 });
