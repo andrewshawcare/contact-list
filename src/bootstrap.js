@@ -2,18 +2,6 @@ const ContactList = require('./contact-list');
 const ApplicationElement = require('./application-element');
 const uuid = require('./uuid');
 
-const contactList = ContactList({
-  contacts: window.localStorage.getItem('contacts')
-    ? JSON.parse(window.localStorage.getItem('contacts'))
-    : require('./contacts.json')
-});
-let currentContact = window.localStorage.getItem('currentContact')
-  ? JSON.parse(window.localStorage.getItem('currentContact'))
-  : contactList.list()[0];
-let currentQuery = window.localStorage.getItem('currentQuery')
-  ? JSON.parse(window.localStorage.getItem('currentQuery'))
-  : '';
-
 const render = ({contact = {}, query = ''}) => {
   document.body.innerHTML = '';
   document.body.appendChild(ApplicationElement({
@@ -88,10 +76,32 @@ const onRemove = (contact) => {
 
   window.localStorage.setItem('contacts', JSON.stringify(contactList.list()));
 
-  currentContact = contactList.list()[0] || {};
-  window.localStorage.setItem('currentContact', JSON.stringify(currentContact));
-
-  render({ contact: currentContact, query: currentQuery });
+  if (contactList.list().length === 0) {
+    onAdd();
+  } else {
+    currentContact = contactList.list()[0];
+    window.localStorage.setItem('currentContact', JSON.stringify(currentContact));
+    render({ contact: currentContact, query: currentQuery });
+  }
 };
+
+const contactList = ContactList({
+  contacts: window.localStorage.getItem('contacts')
+    ? JSON.parse(window.localStorage.getItem('contacts'))
+    : require('./contacts.json')
+});
+
+let currentQuery = window.localStorage.getItem('currentQuery')
+  ? JSON.parse(window.localStorage.getItem('currentQuery'))
+  : '';
+
+let currentContact;
+if (contactList.list().length === 0) {
+  onAdd();
+} else {
+  currentContact = window.localStorage.getItem('currentContact')
+    ? JSON.parse(window.localStorage.getItem('currentContact'))
+    : contactList.list()[0];
+}
 
 render({ contact: currentContact, query: currentQuery });
