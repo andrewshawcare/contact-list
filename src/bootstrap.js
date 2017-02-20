@@ -10,9 +10,8 @@ const render = ({contact = {}, query = ''}) => {
       query,
       links: contactList
         .find(({ firstName, lastName, title }) => (
-          firstName.match(query) ||
-          lastName.match(query) ||
-          title.match(query)
+          `${firstName} ${lastName}`.match(new RegExp(query, 'gi')) ||
+          title.match(new RegExp(query, 'gi'))
         ))
         .map(({ id, firstName, lastName, title }) => {
           return {

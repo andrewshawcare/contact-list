@@ -31,12 +31,12 @@ module.exports = ({
 
     const titleElement = document.createElement('div');
     titleElement.classList.add('title');
-    titleElement.innerHTML = title.replace(query, `<strong>${query}</strong>`);
+    titleElement.innerHTML = (query === '') ? title : title.replace(new RegExp(query, 'gi'), '<strong>$&</strong>');
     linkElement.appendChild(titleElement);
 
     const subtitleElement = document.createElement('div');
     subtitleElement.classList.add('subtitle');
-    subtitleElement.innerHTML = subtitle.replace(query, `<strong>${query}</strong>`);
+    subtitleElement.innerHTML = (query === '') ? subtitle : subtitle.replace(new RegExp(query, 'gi'), '<strong>$&</strong>');
     linkElement.appendChild(subtitleElement);
 
     linkListElement.appendChild(linkElement);

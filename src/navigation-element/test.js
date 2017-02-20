@@ -77,9 +77,9 @@ describe('Navigation element', () => {
       { title: 'Second title', subtitle: 'Second subtitle' },
       { title: 'Third title', subtitle: 'Third subtitle' }
     ];
-    const navigationElement = NavigationElement({ links, query: 'Thi' });
+    const navigationElement = NavigationElement({ links, query: 'third t' });
     const thirdLinkElement = navigationElement.querySelector('.link:nth-of-type(0n + 3)');
-    expect(thirdLinkElement.querySelector('.title').innerHTML).toBe('<strong>Thi</strong>rd title');
-    expect(thirdLinkElement.querySelector('.subtitle').innerHTML).toBe('<strong>Thi</strong>rd subtitle');
+    expect(thirdLinkElement.querySelector('.title').innerHTML).toBe('<strong>Third t</strong>itle');
+    expect(thirdLinkElement.querySelector('.subtitle').innerHTML).toBe('Third subtitle');
   });
 });
