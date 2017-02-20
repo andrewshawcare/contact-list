@@ -2,6 +2,10 @@ module.exports = ({ links = [], onAdd = () => {} } = {}) => {
   const navigationElement = document.createElement('nav');
   navigationElement.classList.add('navigation');
 
+  const searchElement = document.createElement('input');
+  searchElement.classList.add('search');
+  navigationElement.appendChild(searchElement);
+
   const linkListElement = document.createElement('ul');
   linkListElement.classList.add('link', 'list');
 

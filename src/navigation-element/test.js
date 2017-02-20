@@ -31,4 +31,8 @@ describe('Navigation element', () => {
   it('performs the expected behaviour on add', (done) => {
     NavigationElement({ onAdd: done }).querySelector('.add').click();
   });
+
+  it('has a search action', () => {
+    expect(NavigationElement().querySelector('.search')).not.toBeNull();
+  });
 });
