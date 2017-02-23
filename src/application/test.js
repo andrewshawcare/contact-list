@@ -19,4 +19,10 @@ describe('Application', () => {
       expect(currentContact).toEqual(defaultContacts[0]);
     });
   });
+
+  describe('query', () => {
+    it('should be an empty string by default', () => {
+      expect(Application().query()).toEqual('');
+    });
+  });
 });
