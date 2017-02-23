@@ -6,7 +6,8 @@
         "title": "Sales Representative",
         "address": "372 Harbord Street",
         "city": "Toronto",
-        "province": "Ontario"
+        "province": "Ontario",
+        "active": true
     },
     {
         "id": "07c54859-dbd4-4747-8e8f-73f8d144f082",

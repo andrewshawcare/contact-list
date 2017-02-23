@@ -12,4 +12,11 @@ describe('Application', () => {
       expect(Application().contacts()).toEqual(defaultContacts);
     });
   });
+
+  describe('active contact', () => {
+    it('should be the first contact by default', () => {
+      const currentContact = Application().currentContact();
+      expect(currentContact).toEqual(defaultContacts[0]);
+    });
+  });
 });

@@ -22,7 +22,7 @@ describe('List', function () {
   it('finds a list of items from the list, given a filter', () => {
     expect(
       List({items}).find((item) => (item.id === '2'))
-      ).toEqual([items[1]]);
+      ).toEqual(items[1]);
   });
 
   it('allows editing of items from the list, given a filter', () => {
@@ -30,7 +30,7 @@ describe('List', function () {
     const replace = (item) => Object.assign(item, {value: 7});
     expect(
       List({items}).edit({find, replace}).find(find)
-    ).toEqual([replace(items[1])]);
+    ).toEqual(replace(items[1]));
   });
 
   it('allows removal of items from the list, given a filter', () => {
