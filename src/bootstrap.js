@@ -1,4 +1,4 @@
-const ContactList = require('./contact-list');
+const ContactList = require('./list');
 const ApplicationElement = require('./application-element');
 const uuid = require('./uuid');
 
@@ -89,7 +89,7 @@ const onRemove = (contact) => {
 };
 
 const contactList = ContactList({
-  contacts: window.localStorage.getItem('contacts')
+  items: window.localStorage.getItem('contacts')
     ? JSON.parse(window.localStorage.getItem('contacts'))
     : require('./contacts.json')
 });
