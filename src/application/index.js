@@ -1,10 +1,11 @@
 const List = require('../list');
+const defaultContacts = require('./default-contacts.json');
 
-module.exports = () => {
-  const contacts = List();
+module.exports = ({ contacts = defaultContacts } = {}) => {
+  const contactList = List({ items: contacts });
   return {
     contacts () {
-      return contacts.list();
+      return contactList.toArray();
     }
   };
 };

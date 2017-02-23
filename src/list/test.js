@@ -10,13 +10,13 @@ describe('List', function () {
       { id: '3', value: 5 }
     ];
   });
-  it('lists items', function () {
-    expect(List({ items }).list()).toEqual(items);
+  it('can be converted into an array', function () {
+    expect(List({ items }).toArray()).toEqual(items);
   });
 
   it('adds an item to the list', () => {
     const item = items[0];
-    expect(List().add(item).list()).toEqual([item]);
+    expect(List().add(item).toArray()).toEqual([item]);
   });
 
   it('finds a list of items from the list, given a filter', () => {
@@ -34,9 +34,7 @@ describe('List', function () {
   });
 
   it('allows removal of items from the list, given a filter', () => {
-    const itemList = List({items})
-      .remove((item) => (item.id === '2'))
-      .list();
-    expect(itemList).toEqual([items[0], ...items.slice(2)]);
+    const itemList = List({items}).remove((item) => (item.id === '2'));
+    expect(itemList.toArray()).toEqual([items[0], ...items.slice(2)]);
   });
 });
