@@ -44,7 +44,7 @@ describe('Application', () => {
         }
         return idFrequencies;
       }, {});
-      expect(Object.values(idFrequencies).every((frequency) => frequency === 1)).toBe(true);
+      expect(Object.keys(idFrequencies).every((id) => idFrequencies[id] === 1)).toBe(true);
     });
   });
 
