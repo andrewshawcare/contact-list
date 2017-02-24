@@ -6,7 +6,7 @@
   "scripts": {
     "develop": "nodemon --ext 'js,json,html' --watch src --exec 'npm run lint && npm test && npm start'",
     "lint": "semistandard | snazzy",
-    "prestart": "webpack src/bootstrap.js dist/bootstrap.js && cp src/index.html dist",
+    "prestart": "webpack src/bootstrap.js dist/bootstrap.js && cp -R src/index.html src/schemas dist",
     "start": "static --host-address 0.0.0.0 --port $PORT dist",
     "test": "node test.js './src/**/test.js'"
   },
@@ -16,6 +16,7 @@
   },
   "license": "ISC",
   "devDependencies": {
+    "ajv": "^4.11.3",
     "glob": "^7.1.1",
     "jasmine": "^2.5.3",
     "jsdom": "^9.11.0",

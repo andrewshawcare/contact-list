@@ -1,123 +1,93 @@
-const createFieldElement = ({
-  classList = [],
-  type,
-  label = '',
-  value = '',
-  disabled = false,
-  onInput
-} = {}) => {
-  const fieldElement = document.createElement('div');
-  fieldElement.classList.add('field');
-  fieldElement.classList.add.apply(fieldElement.classList, classList);
+const FieldElement = require('../field-element');
 
-  const labelElement = document.createElement('label');
-  labelElement.classList.add('label');
-  labelElement.textContent = label;
-  fieldElement.appendChild(labelElement);
-
-  const valueElement = document.createElement('input');
-  valueElement.classList.add('value');
-  valueElement.setAttribute('type', type);
-  if (disabled) {
-    valueElement.setAttribute('disabled', 'disabled');
-  }
-  valueElement.value = value;
-  if (typeof onInput === 'function') {
-    valueElement.addEventListener('input', onInput);
-  }
-  fieldElement.appendChild(valueElement);
-
-  return fieldElement;
-};
-
-module.exports = ({contact = {}, onEdit = () => {}, onRemove = () => {}} = {}) => {
+module.exports = ({contact = {}, remove = { title: '' }, onEdit = () => {}, onRemove = () => {}} = {}) => {
   const {
-    id = '',
-    firstName = '',
-    lastName = '',
-    title = '',
-    address = '',
-    city = '',
-    province = ''
+    id = { label: '', value: '' },
+    firstName = { label: '', value: '' },
+    lastName = { label: '', value: '' },
+    title = { label: '', value: '' },
+    address = { label: '', value: '' },
+    city = { label: '', value: '' },
+    province = { label: '', value: '' }
   } = contact;
 
   const contactElement = document.createElement('section');
   contactElement.classList.add('contact');
 
-  contactElement.appendChild(createFieldElement({
+  contactElement.appendChild(FieldElement({
     classList: ['id'],
     type: 'text',
-    label: 'ID',
-    value: id,
+    label: id.label,
+    value: id.value,
     disabled: true,
-    onInput: (event) => {
-      onEdit(Object.assign(contact, { id: event.target.value }));
+    onInput: (id) => {
+      onEdit(Object.assign(contact, { id }));
     }
   }));
 
-  contactElement.appendChild(createFieldElement({
+  contactElement.appendChild(FieldElement({
     classList: ['first', 'name'],
     type: 'text',
-    label: 'First name',
-    value: firstName,
-    onInput: (event) => {
-      onEdit(Object.assign(contact, { firstName: event.target.value }));
+    label: firstName.label,
+    value: firstName.value,
+    onInput: (firstName) => {
+      onEdit(Object.assign(contact, { firstName }));
     }
   }));
 
-  contactElement.appendChild(createFieldElement({
+  contactElement.appendChild(FieldElement({
     classList: ['last', 'name'],
     type: 'text',
-    label: 'Last name',
-    value: lastName,
-    onInput: (event) => {
-      onEdit(Object.assign(contact, { lastName: event.target.value }));
+    label: lastName.label,
+    value: lastName.value,
+    onInput: (lastName) => {
+      onEdit(Object.assign(contact, { lastName }));
     }
   }));
 
-  contactElement.appendChild(createFieldElement({
+  contactElement.appendChild(FieldElement({
     classList: ['title'],
     type: 'text',
-    label: 'Title',
-    value: title,
-    onInput: (event) => {
-      onEdit(Object.assign(contact, { title: event.target.value }));
+    label: title.label,
+    value: title.value,
+    onInput: (title) => {
+      onEdit(Object.assign(contact, { title }));
     }
   }));
 
-  contactElement.appendChild(createFieldElement({
+  contactElement.appendChild(FieldElement({
     classList: ['address'],
     type: 'text',
-    label: 'Address',
-    value: address,
-    onInput: (event) => {
-      onEdit(Object.assign(contact, { address: event.target.value }));
+    label: address.label,
+    value: address.value,
+    onInput: (address) => {
+      onEdit(Object.assign(contact, { address }));
     }
   }));
 
-  contactElement.appendChild(createFieldElement({
+  contactElement.appendChild(FieldElement({
     classList: ['city'],
     type: 'text',
-    label: 'City',
-    value: city,
-    onInput: (event) => {
-      onEdit(Object.assign(contact, { city: event.target.value }));
+    label: city.label,
+    value: city.value,
+    onInput: (city) => {
+      onEdit(Object.assign(contact, { city }));
     }
   }));
 
-  contactElement.appendChild(createFieldElement({
+  contactElement.appendChild(FieldElement({
     classList: ['province'],
     type: 'text',
-    label: 'Province',
-    value: province,
-    onInput: (event) => {
-      onEdit(Object.assign(contact, { province: event.target.value }));
+    label: province.label,
+    value: province.value,
+    onInput: (province) => {
+      onEdit(Object.assign(contact, { province }));
     }
   }));
 
   const deleteElement = document.createElement('button');
   deleteElement.classList.add('remove');
-  deleteElement.textContent = 'Remove contact';
+  deleteElement.textContent = remove.title;
   deleteElement.addEventListener('click', () => { onRemove(contact); });
   contactElement.appendChild(deleteElement);
 

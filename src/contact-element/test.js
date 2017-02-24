@@ -7,45 +7,45 @@ describe('Contact element', () => {
   });
 
   it('has an id', () => {
-    const id = '1';
-    expect(ContactElement({ contact: { id } }).querySelector('.id > .label').textContent).toBe('ID');
-    expect(ContactElement({ contact: { id } }).querySelector('.id > .value').value).toBe(id);
+    const id = { label: 'ID', value: '1' };
+    expect(ContactElement({ contact: { id } }).querySelector('.id > .label').textContent).toBe(id.label);
+    expect(ContactElement({ contact: { id } }).querySelector('.id > .value').value).toBe(id.value);
   });
 
   it('has a first name', () => {
-    const firstName = 'John';
-    expect(ContactElement({ contact: { firstName } }).querySelector('.first.name > .label').textContent).toBe('First name');
-    expect(ContactElement({ contact: { firstName } }).querySelector('.first.name > .value').value).toBe(firstName);
+    const firstName = { label: 'First name', value: 'John' };
+    expect(ContactElement({ contact: { firstName } }).querySelector('.first.name > .label').textContent).toBe(firstName.label);
+    expect(ContactElement({ contact: { firstName } }).querySelector('.first.name > .value').value).toBe(firstName.value);
   });
 
   it('has a last name', () => {
-    const lastName = 'Smith';
-    expect(ContactElement({ contact: { lastName } }).querySelector('.last.name > .label').textContent).toBe('Last name');
-    expect(ContactElement({ contact: { lastName } }).querySelector('.last.name > .value').value).toBe(lastName);
+    const lastName = { label: 'Last name', value: 'Smith' };
+    expect(ContactElement({ contact: { lastName } }).querySelector('.last.name > .label').textContent).toBe(lastName.label);
+    expect(ContactElement({ contact: { lastName } }).querySelector('.last.name > .value').value).toBe(lastName.value);
   });
 
   it('has a title', () => {
-    const title = 'Developer';
-    expect(ContactElement({ contact: { title } }).querySelector('.title > .label').textContent).toBe('Title');
-    expect(ContactElement({ contact: { title } }).querySelector('.title > .value').value).toBe(title);
+    const title = { label: 'Title', value: 'Developer' };
+    expect(ContactElement({ contact: { title } }).querySelector('.title > .label').textContent).toBe(title.label);
+    expect(ContactElement({ contact: { title } }).querySelector('.title > .value').value).toBe(title.value);
   });
 
   it('has an address', () => {
-    const address = '123 Fake Street';
-    expect(ContactElement({ contact: { address } }).querySelector('.address > .label').textContent).toBe('Address');
-    expect(ContactElement({ contact: { address } }).querySelector('.address > .value').value).toBe(address);
+    const address = { label: 'Address', value: '123 Fake Street' };
+    expect(ContactElement({ contact: { address } }).querySelector('.address > .label').textContent).toBe(address.label);
+    expect(ContactElement({ contact: { address } }).querySelector('.address > .value').value).toBe(address.value);
   });
 
   it('has a city', () => {
-    const city = 'Fakeville';
-    expect(ContactElement({ contact: { city } }).querySelector('.city > .label').textContent).toBe('City');
-    expect(ContactElement({ contact: { city } }).querySelector('.city > .value').value).toBe(city);
+    const city = { label: 'City', value: 'Fakeville' };
+    expect(ContactElement({ contact: { city } }).querySelector('.city > .label').textContent).toBe(city.label);
+    expect(ContactElement({ contact: { city } }).querySelector('.city > .value').value).toBe(city.value);
   });
 
   it('has a province', () => {
-    const province = 'Fakereal';
-    expect(ContactElement({ contact: { province } }).querySelector('.province > .label').textContent).toBe('Province');
-    expect(ContactElement({ contact: { province } }).querySelector('.province > .value').value).toBe(province);
+    const province = { label: 'Province', value: 'Fakereal' };
+    expect(ContactElement({ contact: { province } }).querySelector('.province > .label').textContent).toBe(province.label);
+    expect(ContactElement({ contact: { province } }).querySelector('.province > .value').value).toBe(province.value);
   });
 
   it('performs the expected behaviour on edit', (done) => {
@@ -62,6 +62,10 @@ describe('Contact element', () => {
 
   it('has a remove action', () => {
     expect(ContactElement().querySelector('.remove')).not.toBeNull();
+  });
+
+  it('has a remove title', () => {
+    expect(ContactElement({ remove: { title: 'Remove' } }).querySelector('.remove').textContent).toBe('Remove');
   });
 
   it('performs the expected behaviour on removal', (done) => {

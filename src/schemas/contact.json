@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "id": "https://secret-journey-33136.herokuapp.com/schemas/contact.json",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "firstName": { "type": "string" },
+    "lastName": { "type": "string" },
+    "title": { "type": "string" },
+    "address": { "type": "string" },
+    "city": { "type": "string" },
+    "province": { "type": "string" },
+    "active": { "type": "boolean" }
+  },
+  "required": [
+    "id",
+    "firstName",
+    "lastName",
+    "title",
+    "address",
+    "city",
+    "province",
+    "active"
+  ]
+}

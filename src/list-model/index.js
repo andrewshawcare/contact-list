@@ -10,15 +10,16 @@ module.exports = ({items = []} = {}) => {
     find (filter) {
       return items.find(filter);
     },
-    edit ({find, replace}) {
+    findAll (filter) {
+      return items.filter(filter);
+    },
+    edit ({filter, replacer}) {
       items = items.map((item) => {
-        return find(item) ? replace(item) : item;
+        return filter(item) ? replacer(item) : item;
       });
-      return this;
     },
     remove (filter) {
       items = items.filter((item) => !filter(item));
-      return this;
     }
   };
 };

@@ -34,12 +34,24 @@ describe('Navigation element', () => {
     expect(NavigationElement().querySelector('.add')).not.toBeNull();
   });
 
+  it('has an add title', () => {
+    expect(NavigationElement({ add: { title: 'Foo' } }).querySelector('.add').textContent).toBe('Foo');
+  });
+
   it('performs the expected behaviour on add', (done) => {
     NavigationElement({ onAdd: done }).querySelector('.add').click();
   });
 
   it('has a search action', () => {
     expect(NavigationElement().querySelector('.search')).not.toBeNull();
+  });
+
+  it('has a search placeholder', () => {
+    expect(
+      NavigationElement({ search: { placeholder: 'Foo' } })
+        .querySelector('.search')
+          .getAttribute('placeholder')
+    ).toBe('Foo');
   });
 
   it('performs the expected behaviour on search', (done) => {
@@ -53,10 +65,6 @@ describe('Navigation element', () => {
     const searchElement = navigationElement.querySelector('.search');
     searchElement.value = expectedQuery;
     searchElement.dispatchEvent(new window.Event('input'));
-  });
-
-  it('has a search placeholder', () => {
-    expect(NavigationElement().querySelector('.search').getAttribute('placeholder')).toBe('Search');
   });
 
   it('has an active link', () => {
@@ -77,7 +85,7 @@ describe('Navigation element', () => {
       { title: 'Second title', subtitle: 'Second subtitle' },
       { title: 'Third title', subtitle: 'Third subtitle' }
     ];
-    const navigationElement = NavigationElement({ links, query: 'third t' });
+    const navigationElement = NavigationElement({ links, search: { query: 'third t' } });
     const thirdLinkElement = navigationElement.querySelector('.link:nth-of-type(0n + 3)');
     expect(thirdLinkElement.querySelector('.title').innerHTML).toBe('<strong>Third t</strong>itle');
     expect(thirdLinkElement.querySelector('.subtitle').innerHTML).toBe('Third subtitle');

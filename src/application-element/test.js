@@ -6,15 +6,15 @@ describe('Application element', () => {
     expect(ApplicationElement().classList.contains('application')).toBe(true);
   });
 
-  it('has a header', () => {
+  it('has a header element', () => {
     expect(ApplicationElement().querySelector('.header')).not.toBeNull();
   });
 
-  it('has a navigation', () => {
+  it('has a navigation element', () => {
     expect(ApplicationElement().querySelector('.navigation')).not.toBeNull();
   });
 
-  it('has a contact', () => {
+  it('has a contact element', () => {
     expect(ApplicationElement().querySelector('.contact')).not.toBeNull();
   });
 });

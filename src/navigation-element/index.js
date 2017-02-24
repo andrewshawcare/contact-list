@@ -1,6 +1,10 @@
 module.exports = ({
-  query = '',
   links = [],
+  search = {
+    placeholder: '',
+    query: ''
+  },
+  add = { title: '' },
   activeLink = () => {},
   onNavigate = () => {},
   onAdd = () => {},
@@ -12,8 +16,8 @@ module.exports = ({
   const searchElement = document.createElement('input');
   searchElement.classList.add('search');
   searchElement.setAttribute('type', 'search');
-  searchElement.setAttribute('placeholder', 'Search');
-  searchElement.value = query;
+  searchElement.setAttribute('placeholder', search.placeholder);
+  searchElement.value = search.query;
   searchElement.addEventListener('input', (event) => { onSearch(event.target.value); });
   navigationElement.appendChild(searchElement);
 
@@ -31,12 +35,12 @@ module.exports = ({
 
     const titleElement = document.createElement('div');
     titleElement.classList.add('title');
-    titleElement.innerHTML = (query === '') ? title : title.replace(new RegExp(query, 'gi'), '<strong>$&</strong>');
+    titleElement.innerHTML = (search.query === '') ? title : title.replace(new RegExp(search.query, 'gi'), '<strong>$&</strong>');
     linkElement.appendChild(titleElement);
 
     const subtitleElement = document.createElement('div');
     subtitleElement.classList.add('subtitle');
-    subtitleElement.innerHTML = (query === '') ? subtitle : subtitle.replace(new RegExp(query, 'gi'), '<strong>$&</strong>');
+    subtitleElement.innerHTML = (search.query === '') ? subtitle : subtitle.replace(new RegExp(search.query, 'gi'), '<strong>$&</strong>');
     linkElement.appendChild(subtitleElement);
 
     linkListElement.appendChild(linkElement);
@@ -46,7 +50,7 @@ module.exports = ({
 
   const addElement = document.createElement('button');
   addElement.classList.add('add');
-  addElement.textContent = 'Add contact';
+  addElement.textContent = add.title;
   addElement.addEventListener('click', () => { onAdd(); });
   navigationElement.appendChild(addElement);
 
