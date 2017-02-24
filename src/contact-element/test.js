@@ -7,45 +7,59 @@ describe('Contact element', () => {
   });
 
   it('has an id', () => {
-    const id = { label: 'ID', value: '1' };
-    expect(ContactElement({ contact: { id } }).querySelector('.id > .label').textContent).toBe(id.label);
-    expect(ContactElement({ contact: { id } }).querySelector('.id > .value').value).toBe(id.value);
+    const idLabel = 'ID';
+    const idValue = '1';
+    const contactElement = ContactElement({ label: { id: idLabel }, contact: { id: idValue } });
+    expect(contactElement.querySelector('.id > .label').textContent).toBe(idLabel);
+    expect(contactElement.querySelector('.id > .value').value).toBe(idValue);
   });
 
   it('has a first name', () => {
-    const firstName = { label: 'First name', value: 'John' };
-    expect(ContactElement({ contact: { firstName } }).querySelector('.first.name > .label').textContent).toBe(firstName.label);
-    expect(ContactElement({ contact: { firstName } }).querySelector('.first.name > .value').value).toBe(firstName.value);
+    const firstNameLabel = 'First name';
+    const firstNameValue = 'John';
+    const contactElement = ContactElement({ label: { firstName: firstNameLabel }, contact: { firstName: firstNameValue } });
+    expect(contactElement.querySelector('.first.name > .label').textContent).toBe(firstNameLabel);
+    expect(contactElement.querySelector('.first.name > .value').value).toBe(firstNameValue);
   });
 
   it('has a last name', () => {
-    const lastName = { label: 'Last name', value: 'Smith' };
-    expect(ContactElement({ contact: { lastName } }).querySelector('.last.name > .label').textContent).toBe(lastName.label);
-    expect(ContactElement({ contact: { lastName } }).querySelector('.last.name > .value').value).toBe(lastName.value);
+    const lastNameLabel = 'Last name';
+    const lastNameValue = 'Smith';
+    const contactElement = ContactElement({ label: { lastName: lastNameLabel }, contact: { lastName: lastNameValue } });
+    expect(contactElement.querySelector('.last.name > .label').textContent).toBe(lastNameLabel);
+    expect(contactElement.querySelector('.last.name > .value').value).toBe(lastNameValue);
   });
 
   it('has a title', () => {
-    const title = { label: 'Title', value: 'Developer' };
-    expect(ContactElement({ contact: { title } }).querySelector('.title > .label').textContent).toBe(title.label);
-    expect(ContactElement({ contact: { title } }).querySelector('.title > .value').value).toBe(title.value);
+    const titleLabel = 'Title';
+    const titleValue = 'Developer';
+    const contactElement = ContactElement({ label: { title: titleLabel }, contact: { title: titleValue } });
+    expect(contactElement.querySelector('.title > .label').textContent).toBe(titleLabel);
+    expect(contactElement.querySelector('.title > .value').value).toBe(titleValue);
   });
 
   it('has an address', () => {
-    const address = { label: 'Address', value: '123 Fake Street' };
-    expect(ContactElement({ contact: { address } }).querySelector('.address > .label').textContent).toBe(address.label);
-    expect(ContactElement({ contact: { address } }).querySelector('.address > .value').value).toBe(address.value);
+    const addressLabel = 'Address';
+    const addressValue = '123 Fake Street';
+    const contactElement = ContactElement({ label: { address: addressLabel }, contact: { address: addressValue } });
+    expect(contactElement.querySelector('.address > .label').textContent).toBe(addressLabel);
+    expect(contactElement.querySelector('.address > .value').value).toBe(addressValue);
   });
 
   it('has a city', () => {
-    const city = { label: 'City', value: 'Fakeville' };
-    expect(ContactElement({ contact: { city } }).querySelector('.city > .label').textContent).toBe(city.label);
-    expect(ContactElement({ contact: { city } }).querySelector('.city > .value').value).toBe(city.value);
+    const cityLabel = 'City';
+    const cityValue = 'Fakeville';
+    const contactElement = ContactElement({ label: { city: cityLabel }, contact: { city: cityValue } });
+    expect(contactElement.querySelector('.city > .label').textContent).toBe(cityLabel);
+    expect(contactElement.querySelector('.city > .value').value).toBe(cityValue);
   });
 
   it('has a province', () => {
-    const province = { label: 'Province', value: 'Fakereal' };
-    expect(ContactElement({ contact: { province } }).querySelector('.province > .label').textContent).toBe(province.label);
-    expect(ContactElement({ contact: { province } }).querySelector('.province > .value').value).toBe(province.value);
+    const provinceLabel = 'Province';
+    const provinceValue = 'Fakereal';
+    const contactElement = ContactElement({ label: { province: provinceLabel }, contact: { province: provinceValue } });
+    expect(contactElement.querySelector('.province > .label').textContent).toBe(provinceLabel);
+    expect(contactElement.querySelector('.province > .value').value).toBe(provinceValue);
   });
 
   it('performs the expected behaviour on edit', (done) => {

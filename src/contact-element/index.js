@@ -1,24 +1,20 @@
 const FieldElement = require('../field-element');
 
-module.exports = ({contact = {}, remove = { title: '' }, onEdit = () => {}, onRemove = () => {}} = {}) => {
-  const {
-    id = { label: '', value: '' },
-    firstName = { label: '', value: '' },
-    lastName = { label: '', value: '' },
-    title = { label: '', value: '' },
-    address = { label: '', value: '' },
-    city = { label: '', value: '' },
-    province = { label: '', value: '' }
-  } = contact;
-
+module.exports = ({
+  contact = {},
+  label = {},
+  remove = { title: '' },
+  onEdit = () => {},
+  onRemove = () => {}
+} = {}) => {
   const contactElement = document.createElement('section');
   contactElement.classList.add('contact');
 
   contactElement.appendChild(FieldElement({
     classList: ['id'],
     type: 'text',
-    label: id.label,
-    value: id.value,
+    label: label.id,
+    value: contact.id,
     disabled: true,
     onInput: (id) => {
       onEdit(Object.assign(contact, { id }));
@@ -28,8 +24,8 @@ module.exports = ({contact = {}, remove = { title: '' }, onEdit = () => {}, onRe
   contactElement.appendChild(FieldElement({
     classList: ['first', 'name'],
     type: 'text',
-    label: firstName.label,
-    value: firstName.value,
+    label: label.firstName,
+    value: contact.firstName,
     onInput: (firstName) => {
       onEdit(Object.assign(contact, { firstName }));
     }
@@ -38,8 +34,8 @@ module.exports = ({contact = {}, remove = { title: '' }, onEdit = () => {}, onRe
   contactElement.appendChild(FieldElement({
     classList: ['last', 'name'],
     type: 'text',
-    label: lastName.label,
-    value: lastName.value,
+    label: label.lastName,
+    value: contact.lastName,
     onInput: (lastName) => {
       onEdit(Object.assign(contact, { lastName }));
     }
@@ -48,8 +44,8 @@ module.exports = ({contact = {}, remove = { title: '' }, onEdit = () => {}, onRe
   contactElement.appendChild(FieldElement({
     classList: ['title'],
     type: 'text',
-    label: title.label,
-    value: title.value,
+    label: label.title,
+    value: contact.title,
     onInput: (title) => {
       onEdit(Object.assign(contact, { title }));
     }
@@ -58,8 +54,8 @@ module.exports = ({contact = {}, remove = { title: '' }, onEdit = () => {}, onRe
   contactElement.appendChild(FieldElement({
     classList: ['address'],
     type: 'text',
-    label: address.label,
-    value: address.value,
+    label: label.address,
+    value: contact.address,
     onInput: (address) => {
       onEdit(Object.assign(contact, { address }));
     }
@@ -68,8 +64,8 @@ module.exports = ({contact = {}, remove = { title: '' }, onEdit = () => {}, onRe
   contactElement.appendChild(FieldElement({
     classList: ['city'],
     type: 'text',
-    label: city.label,
-    value: city.value,
+    label: label.city,
+    value: contact.city,
     onInput: (city) => {
       onEdit(Object.assign(contact, { city }));
     }
@@ -78,8 +74,8 @@ module.exports = ({contact = {}, remove = { title: '' }, onEdit = () => {}, onRe
   contactElement.appendChild(FieldElement({
     classList: ['province'],
     type: 'text',
-    label: province.label,
-    value: province.value,
+    label: label.province,
+    value: contact.province,
     onInput: (province) => {
       onEdit(Object.assign(contact, { province }));
     }

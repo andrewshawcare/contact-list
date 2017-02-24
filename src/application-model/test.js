@@ -23,18 +23,23 @@ describe('Application', () => {
     it('should always have at least one contact', () => {
       const application = new Application();
       while (application.contacts.length > 1) {
-        application.removeContact(() => true);
+        application.removeContact(application.contacts.find(() => true));
       }
-      application.removeContact(() => true);
+      application.removeContact(application.contacts.find(() => true));
       expect(application.contacts.length).toBe(1);
+    });
+
+    it('should add a default contact', () => {
+      const application = new Application();
+      const expectedContact = Object.assign({}, defaultContacts[0], { id: undefined, active: undefined });
+      const actualContact = Object.assign({}, application.addContact(), { id: undefined, active: undefined });
+      expect(actualContact).toEqual(expectedContact);
     });
 
     it('should have unique ids', () => {
       const application = new Application();
       while (application.contacts.length < 50) {
-        const contact = Object.assign({}, defaultContacts[0]);
-        delete contact.id;
-        application.addContact(contact);
+        application.addContact();
       }
       const idFrequencies = application.contacts.reduce((idFrequencies, { id }) => {
         if (idFrequencies.hasOwnProperty(id)) {
@@ -62,11 +67,24 @@ describe('Application', () => {
     it('should change to a new contact if the active contact is deleted', () => {
       const application = new Application();
       while (application.contacts.length > 1) {
-        application.removeContact((contact) => contact.active);
+        application.removeContact(application.contacts.find((contact) => contact.active));
         expect(application.activeContact).toBeDefined();
       }
-      application.removeContact((contact) => contact.active);
+      application.removeContact(application.contacts.find((contact) => contact.active));
       expect(application.activeContact).toBeDefined();
+    });
+
+    it('should change to the new contact if a new contact is added', () => {
+      const application = new Application();
+      const expectedContact = application.addContact();
+      expect(application.activeContact).toEqual(expectedContact);
+    });
+
+    it('should change to the edited contact if a contact is edited', () => {
+      const application = new Application();
+      const expectedContact = Object.assign({}, defaultContacts[0], { firstName: 'Foo' });
+      application.editContact(expectedContact);
+      expect(application.activeContact).toEqual(expectedContact);
     });
   });
 

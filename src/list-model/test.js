@@ -11,33 +11,45 @@ describe('List model', function () {
     ];
   });
   it('can be converted into an array', function () {
-    expect(ListModel({ items }).toArray()).toEqual(items);
+    expect(new ListModel({ items }).toArray()).toEqual(items);
   });
 
   it('adds an item to the list', () => {
-    const item = items[0];
-    expect(ListModel().add(item).toArray()).toEqual([item]);
+    const listModel = new ListModel();
+    const expectedItem = items[0];
+    const actualItem = listModel.add(expectedItem);
+    expect(actualItem).toEqual(expectedItem);
+    expect(listModel.toArray()).toEqual([expectedItem]);
   });
 
   it('finds an item from the list, given a filter', () => {
-    expect(ListModel({items}).find((item) => item.id === '2')).toEqual(items[1]);
+    expect(new ListModel({items}).find((item) => item.id === '2')).toEqual(items[1]);
   });
 
   it('finds all items from the list, given a filter', () => {
-    expect(ListModel({items}).findAll((item) => item.value > 1)).toEqual([items[1], items[2]]);
+    expect(new ListModel({items}).findAll((item) => item.value > 1)).toEqual([items[1], items[2]]);
   });
 
   it('allows editing of an item from the list, given a filter', () => {
     const filter = (item) => (item.id === '2');
-    const replacer = (item) => Object.assign(item, {value: 7});
-    const list = ListModel({items});
-    list.edit({filter, replacer});
-    expect(list.find(filter)).toEqual(replacer(items[1]));
+    const replacer = (item) => Object.assign({}, item, {value: 7});
+    const list = new ListModel({items});
+    const actualItem = list.edit({filter, replacer});
+    expect(actualItem).toEqual(replacer(items[1]));
+  });
+
+  it('does not change the list if no edits can be made', () => {
+    const filter = (item) => false;
+    const replacer = (item) => Object.assign({}, item, {value: 7});
+    const list = new ListModel({items});
+    const actualItem = list.edit({filter, replacer});
+    expect(actualItem).not.toBeDefined();
+    expect(list.toArray()).toEqual(items);
   });
 
   it('allows removal of items from the list, given a filter', () => {
-    const list = ListModel({items});
-    list.remove((item) => (item.id === '2'));
-    expect(list.toArray()).toEqual([items[0], ...items.slice(2)]);
+    const list = new ListModel({items});
+    const actualItem = list.remove((item) => (item.id === '2'));
+    expect(actualItem).toEqual(items[1]);
   });
 });
