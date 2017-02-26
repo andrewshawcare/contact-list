@@ -10,7 +10,6 @@ let historyModelString = window.location.hash
 
 let historyModel, applicationModel;
 if (historyModelString) {
-  console.log(historyModelString);
   historyModel = new HistoryModel(JSON.parse(window.atob(historyModelString)));
   applicationModel = new ApplicationModel(historyModel.currentState);
 } else {
