@@ -4,19 +4,24 @@ const HistoryModel = require('./history-model');
 const HistoryElement = require('./history-element');
 const moment = require('moment');
 
-let historyModelString = window.localStorage.getItem('historyModel');
+let historyModelString = window.location.hash
+  ? window.location.hash.substring(1)
+  : window.localStorage.getItem('historyModel');
+
 let historyModel, applicationModel;
 if (historyModelString) {
-  historyModel = new HistoryModel(JSON.parse(historyModelString));
+  console.log(historyModelString);
+  historyModel = new HistoryModel(JSON.parse(window.atob(historyModelString)));
   applicationModel = new ApplicationModel(historyModel.currentState);
 } else {
   applicationModel = new ApplicationModel();
   historyModel = new HistoryModel({ startingState: applicationModel.toJson() });
 }
-window.localStorage.setItem('historyModel', JSON.stringify(historyModel.toJson()));
 
 const sync = (historyModel) => {
-  window.localStorage.setItem('historyModel', JSON.stringify(historyModel.toJson()));
+  const historyModelString = window.btoa(JSON.stringify(historyModel.toJson()));
+  window.localStorage.setItem('historyModel', historyModelString);
+  window.location.hash = historyModelString;
   return historyModel;
 };
 
@@ -147,4 +152,4 @@ const render = (historyModel) => {
   return { applicationElement, historyElement };
 };
 
-render(historyModel);
+render(sync(historyModel));
