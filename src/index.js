@@ -93,7 +93,8 @@ const render = (historyModel) => {
           return { id, title: `${firstName} ${lastName}`, subtitle: title };
         }),
         isActiveLink: ({ id }) => applicationModel.activeContact.id === id,
-        onNavigate
+        onNavigate,
+        emphasisPattern: applicationModel.searchQuery
       },
       addActionElement: {
         title: 'Add contact',
