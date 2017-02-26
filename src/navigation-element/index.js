@@ -1,58 +1,38 @@
 module.exports = ({
   links = [],
-  search = {
-    placeholder: '',
-    query: ''
-  },
-  add = { title: '' },
-  activeLink = () => {},
+  isActiveLink = () => false,
   onNavigate = () => {},
-  onAdd = () => {},
-  onSearch = () => {}
+  emphasisPattern = ''
 } = {}) => {
   const navigationElement = document.createElement('nav');
   navigationElement.classList.add('navigation');
-
-  const searchElement = document.createElement('input');
-  searchElement.classList.add('search');
-  searchElement.setAttribute('type', 'search');
-  searchElement.setAttribute('placeholder', search.placeholder);
-  searchElement.value = search.query;
-  searchElement.addEventListener('input', (event) => { onSearch(event.target.value); });
-  navigationElement.appendChild(searchElement);
 
   const linkListElement = document.createElement('ul');
   linkListElement.classList.add('link', 'list');
 
   links.forEach((link = {}) => {
-    const { title, subtitle } = link;
+    const { title = '', subtitle = '' } = link;
     const linkElement = document.createElement('li');
     linkElement.classList.add('link');
-    if (activeLink(link)) {
+    if (isActiveLink(link)) {
       linkElement.classList.add('active');
     }
     linkElement.addEventListener('click', () => { onNavigate(link); });
 
     const titleElement = document.createElement('div');
     titleElement.classList.add('title');
-    titleElement.innerHTML = (search.query === '') ? title : title.replace(new RegExp(search.query, 'gi'), '<strong>$&</strong>');
+    titleElement.innerHTML = (emphasisPattern === '') ? title : title.replace(new RegExp(emphasisPattern, 'gi'), '<strong>$&</strong>');
     linkElement.appendChild(titleElement);
 
     const subtitleElement = document.createElement('div');
     subtitleElement.classList.add('subtitle');
-    subtitleElement.innerHTML = (search.query === '') ? subtitle : subtitle.replace(new RegExp(search.query, 'gi'), '<strong>$&</strong>');
+    subtitleElement.innerHTML = (emphasisPattern === '') ? subtitle : subtitle.replace(new RegExp(emphasisPattern, 'gi'), '<strong>$&</strong>');
     linkElement.appendChild(subtitleElement);
 
     linkListElement.appendChild(linkElement);
   });
 
   navigationElement.appendChild(linkListElement);
-
-  const addElement = document.createElement('button');
-  addElement.classList.add('add');
-  addElement.textContent = add.title;
-  addElement.addEventListener('click', () => { onAdd(); });
-  navigationElement.appendChild(addElement);
 
   return navigationElement;
 };

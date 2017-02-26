@@ -1,4 +1,5 @@
 const FieldElement = require('../field-element');
+const ActionElement = require('../action-element');
 
 module.exports = ({
   contact = {},
@@ -81,11 +82,12 @@ module.exports = ({
     }
   }));
 
-  const deleteElement = document.createElement('button');
-  deleteElement.classList.add('remove');
-  deleteElement.textContent = remove.title;
-  deleteElement.addEventListener('click', () => { onRemove(contact); });
-  contactElement.appendChild(deleteElement);
+  const removeActionElement = ActionElement({
+    title: remove.title,
+    onClick: () => { onRemove(contact); }
+  });
+  removeActionElement.classList.add('remove');
+  contactElement.appendChild(removeActionElement);
 
   return contactElement;
 };

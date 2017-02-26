@@ -75,11 +75,11 @@ describe('Contact element', () => {
   });
 
   it('has a remove action', () => {
-    expect(ContactElement().querySelector('.remove')).not.toBeNull();
+    expect(ContactElement().querySelector('.remove.action')).not.toBeNull();
   });
 
   it('has a remove title', () => {
-    expect(ContactElement({ remove: { title: 'Remove' } }).querySelector('.remove').textContent).toBe('Remove');
+    expect(ContactElement({ remove: { title: 'Remove' } }).querySelector('.remove.action').textContent).toBe('Remove');
   });
 
   it('performs the expected behaviour on removal', (done) => {
@@ -90,6 +90,6 @@ describe('Contact element', () => {
         expect(removedContact).toEqual(originalContact);
         done();
       }
-    }).querySelector('.remove').click();
+    }).querySelector('.remove.action').click();
   });
 });

@@ -67,10 +67,12 @@ describe('Application', () => {
     it('should change to a new contact if the active contact is deleted', () => {
       const application = new Application();
       while (application.contacts.length > 1) {
-        application.removeContact(application.contacts.find((contact) => contact.active));
+        const activeContact = application.activeContact;
+        application.removeContact(application.contacts.find((contact) => contact.id === activeContact.id));
         expect(application.activeContact).toBeDefined();
       }
-      application.removeContact(application.contacts.find((contact) => contact.active));
+      const activeContact = application.activeContact;
+      application.removeContact(application.contacts.find((contact) => contact.id === activeContact.id));
       expect(application.activeContact).toBeDefined();
     });
 
@@ -86,6 +88,14 @@ describe('Application', () => {
       application.editContact(expectedContact);
       expect(application.activeContact).toEqual(expectedContact);
     });
+
+    it('returns a copy of the current contact', () => {
+      const application = new Application();
+      const activeContact = application.activeContact;
+      const unlikelyFirstName = 'Unlikelyfirstname123';
+      activeContact.firstName = unlikelyFirstName;
+      expect(application.activeContact.firstName).not.toBe(unlikelyFirstName);
+    });
   });
 
   describe('search', () => {
@@ -93,26 +103,32 @@ describe('Application', () => {
       expect(new Application().searchQuery).toEqual('');
     });
     it('should return all contacts by default', () => {
-      expect(new Application().searchResults).toEqual(defaultContacts);
+      const application = new Application();
+      expect(application.searchResults).toEqual(defaultContacts);
+      expect(application.toJson().searchContactIds).toEqual(defaultContacts.map(({ id }) => id));
     });
     it('should filter contacts that have a name matching the query', () => {
       const application = new Application();
       application.searchQuery = 'amy';
-      expect(application.searchResults).toEqual([defaultContacts[0]]);
+      const expectedContact = defaultContacts[0];
+      expect(application.searchResults).toEqual([expectedContact]);
+      expect(application.toJson().searchContactIds).toEqual([expectedContact.id]);
     });
     it('should filter contacts that have a title matching the query', () => {
       const application = new Application();
       application.searchQuery = 'ceo';
-      expect(application.searchResults).toEqual([defaultContacts[1]]);
+      const expectedContact = defaultContacts[1];
+      expect(application.searchResults).toEqual([expectedContact]);
+      expect(application.toJson().searchContactIds).toEqual([expectedContact.id]);
     });
   });
 
   it('should be serializable', () => {
     expect(new Application().toJson()).toEqual({
       contacts: defaultContacts,
-      activeContact: defaultContacts[0],
+      activeContactId: defaultContacts[0].id,
       searchQuery: '',
-      searchResults: defaultContacts
+      searchContactIds: defaultContacts.map(({ id }) => id)
     });
   });
 });

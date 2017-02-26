@@ -9,17 +9,7 @@
     "title": { "type": "string" },
     "address": { "type": "string" },
     "city": { "type": "string" },
-    "province": { "type": "string" },
-    "active": { "type": "boolean" }
+    "province": { "type": "string" }
   },
-  "required": [
-    "id",
-    "firstName",
-    "lastName",
-    "title",
-    "address",
-    "city",
-    "province",
-    "active"
-  ]
+  "required": [ "id", "firstName", "lastName", "title", "address", "city", "province" ]
 }

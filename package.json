@@ -4,9 +4,9 @@
   "description": "Manage a list of your personal contacts.",
   "main": "src/index.js",
   "scripts": {
-    "develop": "nodemon --ext 'js,json,html' --watch src --exec 'npm run lint && npm test && npm start'",
+    "develop": "nodemon --ext 'js,json,html,css' --watch src --exec 'npm run lint && npm test && npm start'",
     "lint": "semistandard | snazzy",
-    "prestart": "webpack src/bootstrap.js dist/bootstrap.js && cp -R src/index.html src/schemas dist",
+    "prestart": "webpack src/index.js dist/index.js && cp -R src/index.html src/index.css src/schemas dist",
     "start": "static --host-address 0.0.0.0 --port $PORT dist",
     "test": "node test.js './src/**/test.js'"
   },
@@ -26,6 +26,8 @@
     "snazzy": "^6.0.0"
   },
   "dependencies": {
+    "jsondiffpatch": "^0.2.4",
+    "moment": "^2.17.1",
     "node-static": "^0.7.9",
     "webpack": "^2.2.1"
   }

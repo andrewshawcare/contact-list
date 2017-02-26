@@ -10,8 +10,8 @@ describe('Application element', () => {
     expect(ApplicationElement().querySelector('.header')).not.toBeNull();
   });
 
-  it('has a navigation element', () => {
-    expect(ApplicationElement().querySelector('.navigation')).not.toBeNull();
+  it('has a sidebar element', () => {
+    expect(ApplicationElement().querySelector('.sidebar')).not.toBeNull();
   });
 
   it('has a contact element', () => {

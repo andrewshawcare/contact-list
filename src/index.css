@@ -1,0 +1,98 @@
+* {
+  box-sizing: border-box;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+}
+body, button, input {
+  font-size: 1rem;
+  line-height: 1.618em;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+input {
+  -webkit-appearance: none;
+  width: 100%;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  border-bottom: 0.1rem solid black;
+}
+input:focus {
+  outline: none;
+}
+.action {
+  display: block;
+  cursor: pointer;
+  border: none;
+  background-color: black;
+  color: white;
+  padding: 0.5rem;
+  text-align: center;
+  text-decoration: none;
+}
+.application, .history {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  overflow: auto;
+}
+.application > *, .history > * {
+  padding: 1rem;
+}
+.application .header {
+  width: 100%;
+}
+.application .sidebar {
+  flex-grow: 1;
+}
+.application .contact {
+  flex-grow: 3;
+  min-width: 20rem;
+}
+.navigation .link.list {
+  width: 100%;
+  list-style-type: none;
+  margin: 1rem 0;
+  padding: 0;
+}
+.link.list .link {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+.active.link {
+  background-color: lightgray;
+}
+.link.list .link .subtitle {
+  font-size: small;
+}
+.field {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.field .label {
+  font-weight: bold;
+}
+.history > .header {
+  width: 100%;
+}
+.history > .navigation {
+  flex-grow: 1;
+}
+.history > .event {
+  flex-grow: 3;
+  min-width: 20rem;
+}
+.history .event .id {
+  font-weight: bold;
+}
+.history .event .timestamp {
+  font-size: smaller;
+  font-style: italic;
+}

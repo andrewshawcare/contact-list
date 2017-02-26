@@ -3,80 +3,10 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Contact List</title>
-    <style>
-      html, body {
-        margin: 0;
-        padding: 0;
-      }
-      body, button, input {
-        font-size: 1rem;
-        line-height: 1.618em;
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      }
-      input {
-        -webkit-appearance: none;
-        width: 100%;
-        padding: 0;
-        border: none;
-        border-radius: 0;
-        border-bottom: 0.1rem solid black;
-      }
-      input:focus {
-        outline: none;
-      }
-      button {
-        cursor: pointer;
-        width: 100%;
-        border: none;
-        background-color: black;
-        color: white;
-        padding: 0.5rem;
-      }
-      .application {
-        margin: 0 auto;
-        max-width: 50rem;
-        display: flex;
-        flex-wrap: wrap;
-      }
-      .application > * {
-        padding: 1rem;
-      }
-      .application .header {
-        width: 100%;
-      }
-      .application .navigation {
-        flex-grow: 1;
-      }
-      .application .contact {
-        min-width: 20rem;
-        flex-grow: 3;
-      }
-      .navigation .link.list {
-        list-style-type: none;
-        margin: 1rem 0;
-        padding: 0;
-      }
-      .link.list .link {
-        cursor: pointer;
-        padding: 0.5rem 1rem;
-      }
-      .active.link {
-        background-color: lightgray;
-      }
-      .link.list .link .subtitle {
-        font-size: small;
-      }
-      .field {
-        margin-bottom: 1rem;
-        display: flex;
-        flex-direction: column;
-      }
-      .field .label {
-        font-weight: bold;
-      }
-    </style>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="https://cdn.rawgit.com/benjamine/jsondiffpatch/master/public/formatters-styles/html.css" />
   </head>
   <body>
-    <script src="bootstrap.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
