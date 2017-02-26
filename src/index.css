@@ -13,7 +13,7 @@ body, button, input {
 body {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: flex-start;
 }
 input {
   -webkit-appearance: none;
@@ -39,7 +39,7 @@ input:focus {
 .application, .history {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: flex-start;
   overflow: auto;
 }
 .application > *, .history > * {
