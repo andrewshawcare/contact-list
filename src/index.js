@@ -77,17 +77,6 @@ const onHistoryNavigate = ({ id }) => {
   render(sync(historyModel));
 };
 
-const KEYCODE_Z = 90;
-window.addEventListener('keydown', ({ keyCode, ctrlKey, metaKey, shiftKey }) => {
-  if (keyCode === KEYCODE_Z && (ctrlKey || metaKey)) {
-    shiftKey ? historyModel.redo() : historyModel.undo();
-
-    applicationModel = new ApplicationModel(historyModel.currentState);
-
-    render(sync(historyModel));
-  }
-});
-
 const render = (historyModel) => {
   const applicationElement = ApplicationElement({
     headerElement: {
