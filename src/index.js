@@ -129,7 +129,7 @@ const render = (historyModel) => {
     navigationElement: {
       links: historyModel.events.map(({ id, timestamp }) => {
         return { id, title: id, subtitle: moment(timestamp).fromNow() };
-      }),
+      }).reverse(),
       isActiveLink: ({ id }) => historyModel.events[historyModel.eventIndex].id === id,
       onNavigate: onHistoryNavigate
     },
