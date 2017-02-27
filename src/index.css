@@ -13,7 +13,7 @@ body, button, input {
 body {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: flex-start;
 }
 input {
   -webkit-appearance: none;
@@ -40,7 +40,7 @@ input:focus {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: flex-start;
 }
 .application > *, .history > * {
   padding: 1rem;
@@ -60,7 +60,7 @@ input:focus {
 .navigation .link.list {
   width: 100%;
   list-style-type: none;
-  margin: 1rem 0;
+  margin: 0 0 1rem 0;
   padding: 0;
 }
 .link.list .link {
@@ -81,6 +81,9 @@ input:focus {
 .field .label {
   font-weight: bold;
 }
+.search {
+  margin-bottom: 1rem;
+}
 .history {
   border-top: 1px solid lightslategray;
   background-color: aliceblue;
@@ -89,6 +92,7 @@ input:focus {
   width: 100%;
 }
 .history .event .id {
+  margin-top: 0.5rem;
   font-weight: bold;
 }
 .history .event .timestamp {
