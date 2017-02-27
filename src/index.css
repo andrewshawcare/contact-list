@@ -73,6 +73,7 @@ input:focus {
 }
 .link.list .link .subtitle {
   font-size: small;
+  font-style: italic;
 }
 .field {
   margin-bottom: 1rem;
