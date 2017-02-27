@@ -85,6 +85,7 @@ input:focus {
   margin-bottom: 1rem;
 }
 .history {
+  margin-top: 3rem;
   border-top: 1px solid lightslategray;
   background-color: aliceblue;
 }
