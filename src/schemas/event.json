@@ -5,7 +5,7 @@
   "properties": {
     "id": { "type": "string" },
     "timestamp": { "type": "integer" },
-    "patch": { "type": "object" }
+    "delta": { "type": "object" }
   },
-  "required": [ "id", "timestamp", "patch" ]
+  "required": [ "id", "timestamp", "delta" ]
 }

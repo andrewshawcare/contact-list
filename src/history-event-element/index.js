@@ -1,7 +1,7 @@
 const jsondiffpatchFormatters = require('jsondiffpatch/public/build/jsondiffpatch-formatters');
 const moment = require('moment');
 
-module.exports = ({ event: { id = '', timestamp = '', patch } = {}, state } = {}) => {
+module.exports = ({ event: { id = '', timestamp = '', delta } = {}, state } = {}) => {
   const historyEventElement = document.createElement('div');
   historyEventElement.classList.add('event');
 
@@ -15,10 +15,10 @@ module.exports = ({ event: { id = '', timestamp = '', patch } = {}, state } = {}
   timestampElement.textContent = timestamp ? moment(timestamp) : '';
   historyEventElement.appendChild(timestampElement);
 
-  const patchElement = document.createElement('div');
-  patchElement.classList.add('patch');
-  patchElement.innerHTML = jsondiffpatchFormatters.html.format(patch, state);
-  historyEventElement.appendChild(patchElement);
+  const deltaElement = document.createElement('div');
+  deltaElement.classList.add('delta');
+  deltaElement.innerHTML = jsondiffpatchFormatters.html.format(delta, state);
+  historyEventElement.appendChild(deltaElement);
 
   return historyEventElement;
 };

@@ -67,13 +67,13 @@ describe('History model', () => {
     expect(historyModel.currentState).toEqual(startingState);
   });
 
-  it('does not undo past the first event', () => {
+  it('does not undo past the starting state', () => {
     const state = Object.assign({}, startingState, { foo: 'baz' });
     const historyModel = new HistoryModel({ startingState });
     historyModel.state = state;
     historyModel.undo();
     historyModel.undo();
-    expect(historyModel.currentState).toEqual({});
+    expect(historyModel.currentState).toEqual(startingState);
     expect(historyModel.events.length).toEqual(2);
   });
 

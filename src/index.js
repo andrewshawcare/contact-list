@@ -79,7 +79,7 @@ const onHistoryNavigate = ({ id }) => {
 
   applicationModel = new ApplicationModel(historyModel.currentState);
 
-  render(sync(historyModel));
+  render(sync(update(historyModel, applicationModel)));
 };
 
 const render = (historyModel) => {

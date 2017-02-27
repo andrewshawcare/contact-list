@@ -35,7 +35,7 @@ module.exports = class {
     return contacts.filter(({ id }) => this.searchContactIds.includes(id));
   }
   addContact () {
-    const contact = this.contactList.add(Object.assign({}, defaultContacts[0], { id: uuid(), active: false }));
+    const contact = this.contactList.add(Object.assign({}, defaultContacts[0], { id: uuid() }));
     this.activeContact = contact;
     return this.activeContact;
   }
@@ -58,11 +58,11 @@ module.exports = class {
     return contact;
   }
   toJson () {
-    return {
+    return JSON.parse(JSON.stringify({
       contacts: this.contacts,
       activeContactId: this.activeContactId,
       searchQuery: this.searchQuery,
       searchContactIds: this.searchContactIds
-    };
+    }));
   }
 };

@@ -26,6 +26,6 @@ module.exports = class {
     return this.items.splice(index, 1)[0];
   }
   toArray () {
-    return [...this.items];
+    return JSON.parse(JSON.stringify(this.items));
   }
 };

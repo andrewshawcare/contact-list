@@ -15,7 +15,7 @@ describe('History event element', () => {
     expect(HistoryEventElement({ event: { timestamp } }).querySelector('.timestamp').textContent).not.toBe('');
   });
 
-  it('has a patch', () => {
-    expect(HistoryEventElement().querySelector('.patch')).not.toBeNull();
+  it('has a delta', () => {
+    expect(HistoryEventElement().querySelector('.delta')).not.toBeNull();
   });
 });
