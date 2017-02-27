@@ -48,13 +48,13 @@ const onSearch = (query) => {
   applicationElement.querySelector('.search').focus();
 };
 const onEdit = (contact) => {
-  const activeElementParentClassList = document.activeElement.parentElement.classList;
-  const parentSelector = `.${Array.from(activeElementParentClassList).join('.')}`;
+  const activeElementSelector = `.${[...document.activeElement.classList].join('.')}`;
+  const activeElementParentElementSelector = `.${[...document.activeElement.parentElement.classList].join('.')}`;
 
   applicationModel.editContact(contact);
   const { applicationElement } = render(sync(update(historyModel, applicationModel)));
 
-  applicationElement.querySelector(`${parentSelector} .value`).focus();
+  applicationElement.querySelector(`${activeElementParentElementSelector} ${activeElementSelector}`).focus();
 };
 const onRemove = (contact) => {
   applicationModel.removeContact(contact);
