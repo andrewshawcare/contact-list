@@ -13,7 +13,7 @@ body, button, input {
 body {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
+  align-items: baseline;
 }
 input {
   -webkit-appearance: none;
@@ -30,30 +30,32 @@ input:focus {
   display: block;
   cursor: pointer;
   border: none;
-  background-color: black;
+  background-color: lightslategray;
   color: white;
   padding: 0.5rem;
   text-align: center;
   text-decoration: none;
 }
 .application, .history {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
-  overflow: auto;
+  align-items: baseline;
 }
 .application > *, .history > * {
   padding: 1rem;
+  min-width: 24rem;
+  flex-grow: 1;
+}
+.application .sidebar,
+.history .navigation {
+  flex-basis: 0;
 }
 .application .header {
   width: 100%;
 }
-.application .sidebar {
-  flex-grow: 1;
-}
-.application .contact {
-  flex-grow: 3;
-  min-width: 20rem;
+.header .logo {
+  margin-top: 3rem;
 }
 .navigation .link.list {
   width: 100%;
@@ -66,7 +68,7 @@ input:focus {
   padding: 0.5rem 1rem;
 }
 .active.link {
-  background-color: lightgray;
+  background-color: antiquewhite;
 }
 .link.list .link .subtitle {
   font-size: small;
@@ -79,15 +81,12 @@ input:focus {
 .field .label {
   font-weight: bold;
 }
+.history {
+  border-top: 1px solid lightslategray;
+  background-color: aliceblue;
+}
 .history > .header {
   width: 100%;
-}
-.history > .navigation {
-  flex-grow: 1;
-}
-.history > .event {
-  flex-grow: 3;
-  min-width: 20rem;
 }
 .history .event .id {
   font-weight: bold;
