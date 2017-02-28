@@ -43,18 +43,25 @@ const onAdd = () => {
   render(sync(update(historyModel, applicationModel)));
 };
 const onSearch = (query) => {
+  const { selectionStart, selectionEnd } = document.body.querySelector('.application .search');
   applicationModel.searchQuery = query;
   const { applicationElement } = render(sync(update(historyModel, applicationModel)));
-  applicationElement.querySelector('.search').focus();
+  const searchElement = applicationElement.querySelector('.search');
+  searchElement.focus();
+  searchElement.setSelectionRange(selectionStart, selectionEnd);
 };
 const onEdit = (contact) => {
-  const activeElementSelector = `.${[...document.activeElement.classList].join('.')}`;
-  const activeElementParentElementSelector = `.${[...document.activeElement.parentElement.classList].join('.')}`;
+  let activeElement = document.activeElement;
+  const { selectionStart, selectionEnd } = activeElement;
+  const activeElementSelector = `.${[...activeElement.classList].join('.')}`;
+  const activeElementParentElementSelector = `.${[...activeElement.parentElement.classList].join('.')}`;
 
   applicationModel.editContact(contact);
   const { applicationElement } = render(sync(update(historyModel, applicationModel)));
 
-  applicationElement.querySelector(`${activeElementParentElementSelector} ${activeElementSelector}`).focus();
+  activeElement = applicationElement.querySelector(`${activeElementParentElementSelector} ${activeElementSelector}`);
+  activeElement.focus();
+  activeElement.setSelectionRange(selectionStart, selectionEnd);
 };
 const onRemove = (contact) => {
   applicationModel.removeContact(contact);
