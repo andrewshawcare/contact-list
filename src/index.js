@@ -44,9 +44,11 @@ const onAdd = () => {
 };
 const onSearch = (query) => {
   const { selectionStart, selectionEnd } = document.body.querySelector('.application .search');
+
   applicationModel.searchQuery = query;
   const { applicationElement } = render(sync(update(historyModel, applicationModel)));
   const searchElement = applicationElement.querySelector('.search');
+
   searchElement.focus();
   searchElement.setSelectionRange(selectionStart, selectionEnd);
 };

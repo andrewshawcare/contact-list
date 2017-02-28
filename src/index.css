@@ -8,7 +8,7 @@ html, body {
 body, button, input {
   font-size: 1rem;
   line-height: 1.618em;
-  font-family: Georgia, serif;
+  font-family: 'Vollkorn', Georgia, serif;
 }
 body {
   display: flex;
