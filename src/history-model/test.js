@@ -6,7 +6,7 @@ const eventSchema = require('../schemas/event.json');
 describe('History model', () => {
   let startingState;
   beforeEach(() => {
-    startingState = {foo: 'foo', bar: 'bar', baz: 'baz'};
+    startingState = { foo: 'foo', bar: 'bar', baz: 'baz' };
   });
 
   it('returns the starting state', () => {
@@ -37,16 +37,23 @@ describe('History model', () => {
 
   it('records events in sequence on state change', () => {
     const historyModel = new HistoryModel({ startingState });
-    const timeBeforeStateChange = Date.now();
+    
+    const timeBeforeUpdateEvent = Date.now();
     historyModel.state = Object.assign({}, startingState, { foo: 'baz' });
-    const timeAfterStateChange = Date.now();
-    const event = historyModel.events[0];
+    const timeAfterUpdateEvent = Date.now();
+    
+    const startingStateEvent = historyModel.events[0];
+    const updateEvent = historyModel.events[1];
 
-    ajv.validate(eventSchema, event);
+    ajv.validate(eventSchema, startingStateEvent);
     expect(ajv.errors).toBeNull();
 
-    expect(timeBeforeStateChange).not.toBeGreaterThan(event.timestamp);
-    expect(timeAfterStateChange).not.toBeLessThan(event.timestamp);
+    ajv.validate(eventSchema, updateEvent);
+    expect(ajv.errors).toBeNull();
+
+    expect(startingStateEvent.timestamp).not.toBeGreaterThan(timeBeforeUpdateEvent);
+    expect(timeBeforeUpdateEvent).not.toBeGreaterThan(updateEvent.timestamp);
+    expect(updateEvent.timestamp).not.toBeGreaterThan(timeAfterUpdateEvent);
   });
 
   it('can recreate current state from starting state and events', () => {
