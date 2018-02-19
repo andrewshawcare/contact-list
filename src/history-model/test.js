@@ -35,7 +35,7 @@ describe('History model', () => {
     expect(historyModel.events.length).toEqual(1);
   });
 
-  it('records events on state change', () => {
+  it('records events in sequence on state change', () => {
     const historyModel = new HistoryModel({ startingState });
     const timeBeforeStateChange = Date.now();
     historyModel.state = Object.assign({}, startingState, { foo: 'baz' });
@@ -45,8 +45,8 @@ describe('History model', () => {
     ajv.validate(eventSchema, event);
     expect(ajv.errors).toBeNull();
 
-    expect(timeBeforeStateChange <= event.timestamp).toBe(true);
-    expect(timeAfterStateChange >= event.timestamp).toBe(true);
+    expect(timeBeforeStateChange).not.toBeGreaterThan(event.timestamp);
+    expect(timeAfterStateChange).not.toBeLessThan(event.timestamp);
   });
 
   it('can recreate current state from starting state and events', () => {

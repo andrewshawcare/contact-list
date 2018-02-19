@@ -1,6 +1,5 @@
 {
   "$schema": "http://json-schema.org/schema#",
-  "id": "https://secret-journey-33136.herokuapp.com/schemas/contact.json",
   "type": "object",
   "properties": {
     "id": { "type": "string" },

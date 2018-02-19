@@ -1,4 +1,4 @@
-const jsondiffpatch = require('jsondiffpatch/public/build/jsondiffpatch');
+const jsondiffpatch = require('jsondiffpatch/dist/jsondiffpatch.umd');
 const uuid = require('../uuid');
 
 module.exports = class {
