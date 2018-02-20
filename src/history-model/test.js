@@ -37,11 +37,11 @@ describe('History model', () => {
 
   it('records events in sequence on state change', () => {
     const historyModel = new HistoryModel({ startingState });
-    
+
     const timeBeforeUpdateEvent = Date.now();
     historyModel.state = Object.assign({}, startingState, { foo: 'baz' });
     const timeAfterUpdateEvent = Date.now();
-    
+
     const startingStateEvent = historyModel.events[0];
     const updateEvent = historyModel.events[1];
 
