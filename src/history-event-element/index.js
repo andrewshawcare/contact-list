@@ -12,7 +12,7 @@ module.exports = ({ event: { id = '', timestamp = '', delta } = {}, state } = {}
 
   const timestampElement = document.createElement('div');
   timestampElement.classList.add('timestamp');
-  timestampElement.textContent = timestamp ? moment(timestamp) : '';
+  timestampElement.textContent = timestamp ? moment(timestamp).calendar() : '';
   historyEventElement.appendChild(timestampElement);
 
   const deltaElement = document.createElement('div');
