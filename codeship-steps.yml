@@ -6,4 +6,4 @@
   command: test
 - name: deploy
   service: herokudeployment
-  command: codeship_heroku_deploy
+  command: codeship_heroku deploy /deploy secret-journey-33136
