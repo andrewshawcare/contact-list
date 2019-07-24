@@ -39,7 +39,7 @@ input:focus {
   text-decoration: none;
 }
 .application, .history {
-  width: 100%;
+  width: 50%;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -91,8 +91,7 @@ input:focus {
   margin-bottom: 1rem;
 }
 .history {
-  margin-top: 3rem;
-  border-top: 1px solid lightslategray;
+  border-left: 1px solid lightslategray;
   background-color: aliceblue;
 }
 .history > .header {
@@ -103,6 +102,6 @@ input:focus {
   font-weight: bold;
 }
 .history .event .timestamp {
-  font-size: smaller;
+  font-size: small;
   font-style: italic;
 }
