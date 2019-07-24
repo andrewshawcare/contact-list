@@ -1,4 +1,4 @@
-FROM node:6.9.5
+FROM node:lts-alpine
 
 ENV PORT 8080
 EXPOSE ${PORT}
