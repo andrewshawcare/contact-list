@@ -138,7 +138,7 @@ describe('History model', () => {
     historyModel.state = secondState;
     historyModel.state = thirdState;
 
-    const historyModelJson = Object.assign(historyModel.toJson(), {eventIndex: 2});
+    const historyModelJson = Object.assign(historyModel.toJson(), { eventIndex: 2 });
 
     expect(new HistoryModel(historyModelJson).currentState).toEqual(secondState);
   });

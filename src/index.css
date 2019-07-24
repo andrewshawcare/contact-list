@@ -38,15 +38,22 @@ input:focus {
   text-align: center;
   text-decoration: none;
 }
+.application {
+  width: 33%;
+}
+.history {
+  width: 67%;
+}
 .application, .history {
-  width: 50%;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
 }
+.application > * {
+  min-width: 24rem;
+}
 .application > *, .history > * {
   padding: 1rem;
-  min-width: 24rem;
   flex-grow: 1;
 }
 .application .sidebar,
@@ -74,6 +81,9 @@ input:focus {
 }
 .link.list .link .title {
   font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .link.list .link .subtitle {
   font-size: small;
@@ -96,6 +106,12 @@ input:focus {
 }
 .history > .header {
   width: 100%;
+}
+.history > .navigation {
+  max-width: 20%;
+}
+.history .event {
+  min-width: 80%;
 }
 .history .event .id {
   margin-top: 0.5rem;

@@ -12,7 +12,7 @@ module.exports = ({
 
   sidebarElement.appendChild(SearchElement(searchElement));
   sidebarElement.appendChild(NavigationElement(navigationElement));
-  sidebarElement.appendChild(ActionElement(Object.assign(addActionElement, {classList: ['add']})));
+  sidebarElement.appendChild(ActionElement(Object.assign(addActionElement, { classList: ['add'] })));
 
   return sidebarElement;
 };

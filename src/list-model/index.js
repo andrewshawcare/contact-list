@@ -1,5 +1,5 @@
 module.exports = class {
-  constructor ({items = []} = {}) {
+  constructor ({ items = [] } = {}) {
     this.items = [...items];
   }
   add (item) {
@@ -12,7 +12,7 @@ module.exports = class {
   findAll (filter) {
     return this.items.filter(filter);
   }
-  edit ({filter, replacer}) {
+  edit ({ filter, replacer }) {
     const index = this.items.findIndex(filter);
     if (index > -1) {
       this.items.splice(index, 1, replacer(Object.assign({}, this.items[index])));

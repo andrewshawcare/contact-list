@@ -8,7 +8,7 @@ module.exports = class {
     searchQuery = '',
     activeContactId = defaultContacts[0].id
   } = {}) {
-    this.contactList = new ListModel({items: [...contacts]});
+    this.contactList = new ListModel({ items: [...contacts] });
     this.searchQuery = searchQuery;
     this.activeContactId = activeContactId;
   }
@@ -16,7 +16,7 @@ module.exports = class {
     return this.contactList.toArray();
   }
   get activeContact () {
-    const activeContact = this.contactList.find(({id}) => id === this.activeContactId);
+    const activeContact = this.contactList.find(({ id }) => id === this.activeContactId);
     return activeContact ? Object.assign({}, activeContact) : activeContact;
   }
   set activeContact ({ id }) { this.activeContactId = id; }
