@@ -111,8 +111,6 @@ input:focus {
 }
 .history .event .timestamp {
   font-size: small;
-  font-weight: bold;
-  font-style: italic;
 }
 .delta > .jsondiffpatch-delta {
   padding: 0;
