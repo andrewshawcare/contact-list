@@ -43,6 +43,7 @@ input:focus {
 }
 .application, .history {
   display: flex;
+  flex-grow: 1;
   flex-wrap: wrap;
   align-items: flex-start;
 }
