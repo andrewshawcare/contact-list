@@ -13,7 +13,7 @@ body, button, input {
 }
 body {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: flex-start;
 }
 input {
@@ -31,26 +31,20 @@ input:focus {
   display: block;
   cursor: pointer;
   border: none;
-  background-color: brown;
-  color: white;
+  background-color: gainsboro;
+  color: black;
   font-weight: bold;
-  padding: 0.5rem;
+  padding: 1rem;
   text-align: center;
   text-decoration: none;
 }
-.application {
-  width: 33%;
-}
-.history {
-  width: 67%;
+.action:hover {
+  background-color: gold;
 }
 .application, .history {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-}
-.application > * {
-  min-width: 24rem;
 }
 .application > *, .history > * {
   padding: 1rem;
@@ -76,14 +70,15 @@ input:focus {
   cursor: pointer;
   padding: 0.5rem 1rem;
 }
-.active.link {
-  background-color: antiquewhite;
+.link.list .link:hover {
+  background-color: whitesmoke;
 }
-.link.list .link .title {
+.link.list .active.link {
+  background-color: gold;
+  cursor: auto;
+}
+.title, .subtitle {
   font-weight: bold;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 }
 .link.list .link .subtitle {
   font-size: small;
@@ -100,18 +95,8 @@ input:focus {
 .search {
   margin-bottom: 1rem;
 }
-.history {
-  border-left: 1px solid lightslategray;
-  background-color: aliceblue;
-}
 .history > .header {
   width: 100%;
-}
-.history > .navigation {
-  max-width: 20%;
-}
-.history .event {
-  min-width: 80%;
 }
 .history .event .id {
   margin-top: 0.5rem;
@@ -119,5 +104,9 @@ input:focus {
 }
 .history .event .timestamp {
   font-size: small;
+  font-weight: bold;
   font-style: italic;
+}
+.delta > .jsondiffpatch-delta {
+  padding: 0;
 }
