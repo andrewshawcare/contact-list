@@ -1,1 +1,1 @@
-web: npm start
+web: NEWRELIC_ENABLED=true npm start

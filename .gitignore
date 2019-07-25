@@ -1,5 +1,7 @@
 node_modules
-codeship.aes
-npm-debug.log
 dist
 localStorage
+*.aes
+*.env
+*.log
+.DS_Store
