@@ -79,12 +79,11 @@ input:focus {
   background-color: gold;
   cursor: auto;
 }
-.title, .subtitle {
+.title {
   font-weight: bold;
 }
 .link.list .link .subtitle {
   font-size: small;
-  font-style: italic;
 }
 .field {
   margin-bottom: 1rem;
