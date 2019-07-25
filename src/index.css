@@ -95,6 +95,9 @@ input:focus {
 .search {
   margin-bottom: 1rem;
 }
+.history {
+  background-color: aliceblue;
+}
 .history > .header {
   width: 100%;
 }
