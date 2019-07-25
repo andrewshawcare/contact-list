@@ -99,7 +99,7 @@ input:focus {
   width: 100%;
 }
 .history .event {
-  flex-basis: 0;
+  flex-basis: 1;
 }
 .history .event .id {
   margin-top: 0.5rem;

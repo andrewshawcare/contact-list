@@ -91,6 +91,20 @@ const onHistoryNavigate = ({ id }) => {
   render(sync(update(historyModel, applicationModel)));
 };
 
+window.addEventListener('keydown', (event) => {
+  if (event.shiftKey && event.code === 'ArrowDown') {
+    historyModel.undo();
+    applicationModel = new ApplicationModel(historyModel.currentState);
+    render(sync(update(historyModel, applicationModel)));
+  }
+
+  if (event.shiftKey && event.code === 'ArrowUp') {
+    historyModel.redo();
+    applicationModel = new ApplicationModel(historyModel.currentState);
+    render(sync(update(historyModel, applicationModel)));
+  }
+});
+
 const render = (historyModel) => {
   const applicationElement = ApplicationElement({
     headerElement: {
