@@ -98,6 +98,9 @@ input:focus {
 .history > .header {
   width: 100%;
 }
+.history .event {
+  flex-basis: 0;
+}
 .history .event .id {
   margin-top: 0.5rem;
   font-weight: bold;
