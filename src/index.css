@@ -39,7 +39,7 @@ input:focus {
   text-decoration: none;
 }
 .action:hover {
-  background-color: gold;
+  background-color: silver;
 }
 .application, .history {
   display: flex;
@@ -73,7 +73,7 @@ input:focus {
   padding: 0.5rem 1rem;
 }
 .link.list .link:hover {
-  background-color: whitesmoke;
+  background-color: papayawhip;
 }
 .link.list .active.link {
   background-color: gold;
@@ -97,7 +97,7 @@ input:focus {
   margin-bottom: 1rem;
 }
 .history {
-  background-color: gainsboro;
+  background-color: aliceblue;
 }
 .history > .header {
   width: 100%;
