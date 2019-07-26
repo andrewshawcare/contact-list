@@ -73,7 +73,7 @@ input:focus {
   padding: 0.5rem 1rem;
 }
 .link.list .link:hover {
-  background-color: papayawhip;
+  background-color: gainsboro;
 }
 .link.list .active.link {
   background-color: gold;
