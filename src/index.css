@@ -97,7 +97,7 @@ input:focus {
   margin-bottom: 1rem;
 }
 .history {
-  background-color: aliceblue;
+  background-color: gainsboro;
 }
 .history > .header {
   width: 100%;
