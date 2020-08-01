@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "jsondiffpatch": "~0.3.11",
-    "moment": "~2.24.0",
+    "moment": "~2.27.0",
     "newrelic": "~5.10.0",
     "node-static": "~0.7.11",
     "webpack": "~4.37.0",
