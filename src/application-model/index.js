@@ -12,14 +12,18 @@ module.exports = class {
     this.searchQuery = searchQuery;
     this.activeContactId = activeContactId;
   }
+
   get contacts () {
     return this.contactList.toArray();
   }
+
   get activeContact () {
     const activeContact = this.contactList.find(({ id }) => id === this.activeContactId);
     return activeContact ? Object.assign({}, activeContact) : activeContact;
   }
+
   set activeContact ({ id }) { this.activeContactId = id; }
+
   get searchContactIds () {
     const queryRegExp = new RegExp(this.searchQuery, 'gi');
     const searchContacts = this.contactList.findAll(({ firstName, lastName, title }) => {
@@ -30,15 +34,18 @@ module.exports = class {
     });
     return searchContacts.map(({ id }) => id);
   }
+
   get searchResults () {
     const contacts = this.contactList.toArray();
     return contacts.filter(({ id }) => this.searchContactIds.includes(id));
   }
+
   addContact () {
     const contact = this.contactList.add(Object.assign({}, defaultContacts[0], { id: uuid() }));
     this.activeContact = contact;
     return this.activeContact;
   }
+
   editContact (contact) {
     this.contactList.edit({
       filter: ({ id }) => id === contact.id,
@@ -47,6 +54,7 @@ module.exports = class {
     this.activeContact = contact;
     return contact;
   }
+
   removeContact (contact) {
     this.contactList.remove(({ id }) => id === contact.id);
     if (this.contactList.toArray().length === 0) {
@@ -57,6 +65,7 @@ module.exports = class {
     }
     return contact;
   }
+
   toJson () {
     return JSON.parse(JSON.stringify({
       contacts: this.contacts,

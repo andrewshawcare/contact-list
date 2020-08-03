@@ -17,6 +17,7 @@ module.exports = class {
       });
     }
   }
+
   set state (state) {
     const stateString = JSON.stringify(state);
     const currentStateString = JSON.stringify(this.currentState);
@@ -30,6 +31,7 @@ module.exports = class {
 
     this.eventIndex = this.events.length - 1;
   }
+
   undo () {
     if (this.eventIndex < 1) { return; }
 
@@ -37,6 +39,7 @@ module.exports = class {
     this.diffpatcher.unpatch(this.currentState, event.delta);
     this.eventIndex--;
   }
+
   redo () {
     if (this.eventIndex >= this.events.length - 1) { return; }
 
@@ -44,6 +47,7 @@ module.exports = class {
     this.diffpatcher.patch(this.currentState, event.delta);
     this.eventIndex++;
   }
+
   toJson () {
     return JSON.parse(JSON.stringify({
       startingState: this.startingState,
