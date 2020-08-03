@@ -42,7 +42,7 @@ describe('Application', () => {
         application.addContact();
       }
       const idFrequencies = application.contacts.reduce((idFrequencies, { id }) => {
-        if (idFrequencies.hasOwnProperty(id)) {
+        if (Object.prototype.hasOwnProperty.call(idFrequencies, 'id')) {
           idFrequencies[id]++;
         } else {
           idFrequencies[id] = 1;
