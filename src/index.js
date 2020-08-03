@@ -7,7 +7,7 @@ const moment = require('moment');
 let historyModel, applicationModel;
 
 const init = () => {
-  let historyModelString = window.location.hash
+  const historyModelString = window.location.hash
     ? window.location.hash.substring(1)
     : window.localStorage.getItem('historyModel');
 
