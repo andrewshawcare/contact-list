@@ -16,7 +16,7 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "ajv": "~6.10.2",
+    "ajv": "~6.12.4",
     "glob": "~7.1.6",
     "jasmine": "~3.6.1",
     "jsdom": "~15.1.1",
@@ -28,7 +28,7 @@
   "dependencies": {
     "jsondiffpatch": "~0.3.11",
     "moment": "~2.27.0",
-    "newrelic": "~5.10.0",
+    "newrelic": "~6.12.1",
     "node-static": "~0.7.11",
     "webpack": "~4.44.1",
     "webpack-cli": "~3.3.5"
