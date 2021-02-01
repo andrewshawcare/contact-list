@@ -31,6 +31,6 @@
     "newrelic": "~6.13.0",
     "node-static": "~0.7.11",
     "webpack": "~4.44.1",
-    "webpack-cli": "~3.3.5"
+    "webpack-cli": "~3.3.12"
   }
 }
