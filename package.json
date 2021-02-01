@@ -26,7 +26,7 @@
     "snazzy": "~8.0.0"
   },
   "dependencies": {
-    "jsondiffpatch": "~0.3.11",
+    "jsondiffpatch": "~0.4.1",
     "moment": "~2.27.0",
     "newrelic": "~6.13.0",
     "node-static": "~0.7.11",
